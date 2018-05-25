@@ -6,8 +6,18 @@
 /*   By: shcohen <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/16 23:27:45 by shcohen           #+#    #+#             */
-/*   Updated: 2018/05/16 23:27:54 by shcohen          ###   ########.fr       */
+/*   Updated: 2018/05/17 21:47:48 by shcohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 
+int		ft_strlen(char *str)
+{
+	int		i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}
