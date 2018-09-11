@@ -6,12 +6,11 @@
 #    By: shcohen <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/15 15:15:10 by shcohen           #+#    #+#              #
-#    Updated: 2018/05/25 22:08:00 by shcohen          ###   ########.fr        #
+#    Updated: 2018/09/11 19:57:57 by shcohen          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
-CC = gcc
 FLAGS = -Wall -Werror -Wextra
 SRC = ft_memset.c \
 	  ft_bzero.c \
@@ -58,22 +57,31 @@ SRC = ft_memset.c \
 	  ft_strnew.c \
 	  ft_strdel.c \
 	  ft_memalloc.c \
-	  ft_memdel.c
-SRCO = ${SRC:.c=.o}
+	  ft_memdel.c \
+	  ft_itoa.c \
+	  ft_strsub.c \
+	  ft_strtrim.c \
+	  ft_strjoin.c \
+	  ft_strsplit.c \
+	  ft_strlcat.c \
+	  ft_lstnew.c \
+	  ft_lstdelone.c \
+	  ft_lstdel.c \
+	  ft_lstadd.c
+BIN = $(SRC:.c=.o)
 
 all : $(NAME)
 
-$(NAME) :
-		$(CC) $(FLAGS) -c $(SRC)
-		ar rc $(NAME) $(SRCO)
-		ranlib $(NAME)
+%.o: %.c
+	gcc $(FLAGS) -c $< -o $@
 
+$(NAME) : $(BIN)
+	@ar rc $(NAME) $(BIN)
+	@ranlib $(NAME)
 clean :
-	rm -rf $(SRCO)
-
+	@rm -f $(BIN)
 fclean : clean
-	rm -rf $(NAME)
-
+	@rm -f $(NAME)
 re : fclean all
 
 .PHONY : all clean fclean re

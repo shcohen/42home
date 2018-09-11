@@ -6,13 +6,13 @@
 /*   By: shcohen <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/17 21:06:02 by shcohen           #+#    #+#             */
-/*   Updated: 2018/05/17 21:48:37 by shcohen          ###   ########.fr       */
+/*   Updated: 2018/06/19 17:39:29 by shcohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strcat(char *dest, char *src)
+char	*ft_strcat(char *dest, const char *src)
 {
 	int		i;
 	int		j;

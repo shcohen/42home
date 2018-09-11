@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnew.c                                        :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shcohen <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: shcohen <shcohen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/25 21:16:04 by shcohen           #+#    #+#             */
-/*   Updated: 2018/07/18 16:52:00 by shcohen          ###   ########.fr       */
+/*   Created: 2018/09/04 17:16:43 by shcohen           #+#    #+#             */
+/*   Updated: 2018/09/11 18:12:31 by shcohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnew(size_t size)
+t_list	*ft_lstnew(void const *content, size_t content_size)
 {
-	char	*str;
-	size_t	i;
+	t_list	*maillon;
 
-	i = 0;
-	if (!(str = malloc(sizeof(char) * (size + 1))))
+	if (!(maillon = (t_list *)malloc(sizeof(t_list))))
 		return (NULL);
-	while (i < size)
-	{
-		str[i] = '\0';
-		i++;
-	}
-	str[i] = '\0';
-	return (str);
+	maillon->next = NULL;
+	maillon->content = (void*)content;
+	maillon->content_size = !(!content) * content_size;
+	return (maillon);
 }

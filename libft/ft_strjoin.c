@@ -1,31 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shcohen <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/17 19:45:10 by shcohen           #+#    #+#             */
-/*   Updated: 2018/06/19 17:41:27 by shcohen          ###   ########.fr       */
+/*   Created: 2018/06/13 22:31:23 by shcohen           #+#    #+#             */
+/*   Updated: 2018/06/14 16:27:14 by shcohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strncpy(char *dest, const char *src, size_t n)
+char	*ft_strjoin(const char *s1, const char *s2)
 {
-	size_t	i;
+	unsigned int	i;
+	unsigned int	j;
+	char			*str;
 
 	i = 0;
-	while (src[i] && i < n)
+	j = 0;
+	if (!s1 || !s2)
+		return (NULL);
+	if (!(str = malloc(sizeof(char) * ((ft_strlen(s1) + ft_strlen(s2) + 1)))))
+		return (NULL);
+	while (s1[i])
 	{
-		dest[i] = src[i];
+		str[i] = s1[i];
 		i++;
 	}
-	while (i < n)
+	while (s2[j])
 	{
-		dest[i] = '\0';
+		str[i] = s2[j];
 		i++;
+		j++;
 	}
-	return (dest);
+	str[i] = '\0';
+	return (str);
 }
