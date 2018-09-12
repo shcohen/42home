@@ -1,31 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shcohen <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/16 23:27:45 by shcohen           #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2018/06/19 17:47:39 by shcohen          ###   ########.fr       */
-=======
-/*   Updated: 2018/06/12 16:21:15 by shcohen          ###   ########.fr       */
->>>>>>> 210e901da71f918709e768c6518c4d226309c033
+/*   Created: 2018/09/12 17:22:34 by shcohen           #+#    #+#             */
+/*   Updated: 2018/09/12 20:00:39 by shcohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-<<<<<<< HEAD
-size_t	ft_strlen(const char *str)
-=======
-int		ft_strlen(const char *str)
->>>>>>> 210e901da71f918709e768c6518c4d226309c033
+t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	size_t	i;
+	t_list	*first;
+	t_list	*tmp;
 
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
+	if (!lst)
+		return (NULL);
+	tmp = f(lst);
+	first = tmp;
+	while (lst->next != NULL)
+	{
+		lst = lst->next;
+		if (!(tmp->next = f(lst)))
+		{
+			free(tmp->next);
+			return (NULL);
+		}
+		tmp = tmp->next;
+	}
+	return (first);
 }

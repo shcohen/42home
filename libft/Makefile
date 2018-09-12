@@ -6,7 +6,11 @@
 #    By: shcohen <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/15 15:15:10 by shcohen           #+#    #+#              #
+<<<<<<< HEAD
 #    Updated: 2018/09/11 19:57:57 by shcohen          ###   ########.fr        #
+=======
+#    Updated: 2018/06/17 17:26:31 by shcohen          ###   ########.fr        #
+>>>>>>> 210e901da71f918709e768c6518c4d226309c033
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,11 +67,15 @@ SRC = ft_memset.c \
 	  ft_strtrim.c \
 	  ft_strjoin.c \
 	  ft_strsplit.c \
+<<<<<<< HEAD
 	  ft_strlcat.c \
 	  ft_lstnew.c \
 	  ft_lstdelone.c \
 	  ft_lstdel.c \
 	  ft_lstadd.c
+=======
+	  ft_strlcat.c
+>>>>>>> 210e901da71f918709e768c6518c4d226309c033
 BIN = $(SRC:.c=.o)
 
 all : $(NAME)
