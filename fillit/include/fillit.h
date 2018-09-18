@@ -6,7 +6,7 @@
 /*   By: shcohen <shcohen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/20 21:13:18 by shcohen           #+#    #+#             */
-/*   Updated: 2018/09/17 20:36:28 by shcohen          ###   ########.fr       */
+/*   Updated: 2018/09/18 19:19:17 by shcohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,13 @@
 # define FILLIT_H
 # include "../libft/libft.h"
 # include <fcntl.h>
-# define BUF_SIZE 547
+# define BUF_SIZE 550
+
+typedef struct	s_tetri
+{
+	char 			*str;
+	struct s_tetri	*next;
+} 				t_tetri;
 
 typedef struct	s_struct
 {

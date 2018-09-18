@@ -6,7 +6,7 @@
 /*   By: shcohen <shcohen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/13 17:43:26 by shcohen           #+#    #+#             */
-/*   Updated: 2018/09/17 20:38:30 by shcohen          ###   ########.fr       */
+/*   Updated: 2018/09/18 19:14:50 by shcohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 int	ft_openfile(char* argv, t_var *var)
 {
-	int	fd;
+	int			fd;
 
 	fd = open (argv, O_RDONLY); // = index sur fichier a ouvrir (3)
 	if (fd == -1)
 		ft_error(1, var);
-	puts("\nfile opened.");
+	puts("file opened.");
 	return (fd);
 }
 
