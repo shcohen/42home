@@ -5,17 +5,18 @@
 #                                                     +:+ +:+         +:+      #
 #    By: shcohen <shcohen@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2018/09/13 15:59:26 by shcohen           #+#    #+#              #
-#    Updated: 2018/09/17 19:38:40 by shcohen          ###   ########.fr        #
+#    Created: 2018/09/20 20:03:35 by shcohen           #+#    #+#              #
+#    Updated: 2018/09/20 23:05:49 by shcohen          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fillit
 
 SRC = src/main.c \
-	ft_error.c \
-	ft_open_read_close.c \
-	ft_tetri.c
+	src/ft_open_read_close.c \
+	src/ft_create_tetris.c \
+	src/ft_first_check.c \
+	src/ft_check_forme.c
 
 OBJ = $(SRC:.c=.o) 
 
