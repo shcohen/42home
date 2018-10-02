@@ -6,46 +6,36 @@
 /*   By: shcohen <shcohen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 14:12:02 by shcohen           #+#    #+#             */
-/*   Updated: 2018/09/26 17:38:24 by shcohen          ###   ########.fr       */
+/*   Updated: 2018/10/02 21:15:01 by shcohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fillit.h"
 
-// comment sauvegarder la forme initiale du tetriminos ?
-
-char	**ft_turn_left(t_vars *vars, char **final, int x, int y)
+void ft_putleft(char *tetris)
 {
-    char    **tab;
-    
-    final = 0;
-    tab = vars->tab;
-    if (tab[y][x] == '#')
-    {
-        if (tab[y][x - 1] == '.')
-            tab[y][x] = tab[y][x - 1];
-    }
-    final = tab;
-    return (final);
-}
+  int i;
+  int j;
+  int pt5;
+  int pt10;
+  int pt15;
 
-void    ft_put_left(t_vars *vars)
-{
-    char    **tab;
-    int     x; // lignes
-    int     y; // colonnes
-    char     **final; // position finale du tetriminos
+  i = 0;
+  pt5 = 5;
+  pt10 = 10;
+  pt15 = 15;
 
-    tab = vars->tab;
-    y = 0;
-    while (y < 4)
+  while (tetris[i] == '.' && tetris[i + pt5] == '.' && tetris[i + pt10] == '.' \
+         && tetris[i + pt15] == '.')
+          i++;
+  j = 0;
+  while (j < 20)
+  {
+    if (tetris[j] == '#' && i != 0)
     {
-        x = 0;
-        while (x < 4)
-        {
-            final = ft_turn_left(vars, final, x, y);
-            x++;
-        }
-        y++;
+      tetris[j - i] = tetris[j];
+      tetris[j] = '.';
     }
+    j++;
+  }
 }

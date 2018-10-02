@@ -6,7 +6,7 @@
 /*   By: shcohen <shcohen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/20 19:58:37 by shcohen           #+#    #+#             */
-/*   Updated: 2018/09/26 21:10:15 by shcohen          ###   ########.fr       */
+/*   Updated: 2018/10/02 21:17:39 by shcohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ int		main(int argc, char **argv)
 	buf = ft_readfile(fd);
 	ft_closefile(fd);
 	ft_create_tetris(&vars, buf, &first);
-
     while (first != NULL)
     {
         printf("%s\n\n", first->tetris);
