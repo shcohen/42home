@@ -1,34 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_put_up.c                                        :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shcohen <shcohen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/26 14:11:42 by shcohen           #+#    #+#             */
-/*   Updated: 2018/10/02 21:14:59 by shcohen          ###   ########.fr       */
+/*   Created: 2018/09/04 17:16:43 by shcohen           #+#    #+#             */
+/*   Updated: 2018/09/11 18:12:31 by shcohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/fillit.h"
+#include "libft.h"
 
-void ft_putup(char *tetris) // VAR
+t_list	*ft_lstnew(void const *content, size_t content_size)
 {
-  int i;
-  int save;
+	t_list	*maillon;
 
-  i = 0;
-  while (tetris[i] != '#')
-    i++;
-  save = i;
-  while (i < 20)
-  {
-    if (tetris[i] == '#')
-    {
-      tetris[i - ((save / 5) * 5)] = '#';
-      if((save / 5) != 0)
-        tetris[i] = '.';
-    }
-    i++;
-  }
+	if (!(maillon = (t_list *)malloc(sizeof(t_list))))
+		return (NULL);
+	maillon->next = NULL;
+	maillon->content = (void*)content;
+	maillon->content_size = !(!content) * content_size;
+	return (maillon);
 }
