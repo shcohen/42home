@@ -1,0 +1,2 @@
+pour faire pointer un ndd sur une adresse ip il faudra modifier le dossier /etc/hosts 
+pour cela il faut faire : echo "nom-de-domaine >> adresse-ip" dans /etc/hosts

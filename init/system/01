@@ -1,0 +1,1 @@
+la version de ma Debian se trouve dans le fichier /etc, faire un cat debian_version

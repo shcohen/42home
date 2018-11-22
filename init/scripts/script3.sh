@@ -1,0 +1,16 @@
+#!/bin/sh
+
+echo "             /mMMMMMd:   hMMMMNs+MMMMMMM"
+echo "           /mMMMMMd:     hMMNs  /MMMMMMM"
+echo "         /mMMMMMd:       hNs    /MMMMMMM"
+echo "       /mMMMMMd:         /      +MMMMMMm"
+echo "     /mMMMMMd:                :hMMMMMm+ "
+echo "   /mMMMMMd:                :hMMMMMm+   "
+echo " /mMMMMMd:                :hMMMMMm+     "
+echo "mMMMMMMmyyyyyyyyyyyyyy   sMMMMMMh      /"
+echo "MMMMMMMMMMMMMMMMMMMMMM   hMMMMMMy    +mM"
+echo "MMMMMMMMMMMMMMMMMMMMMM   hMMMMMMy  +mMMM"
+echo "::::::::::::::oMMMMMMM   hMMMMMMy+mMMMMM"
+echo "              :MMMMMMM                  "
+echo "              :MMMMMMM                  "
+echo "              :MMMMMMM                  "

@@ -1,0 +1,1 @@
+Le fichier contenant les clés RSA des machines autorisées à se connecter via SSH se trouve dans etc/ssh dans le fichier ssh_host_rsa_key (https://formation-debian.viarezo.fr/ssh.html)
