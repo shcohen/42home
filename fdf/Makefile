@@ -6,7 +6,7 @@
 #    By: shcohen <shcohen@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/22 15:42:25 by shcohen           #+#    #+#              #
-#    Updated: 2018/12/03 17:46:09 by shcohen          ###   ########.fr        #
+#    Updated: 2018/12/03 19:13:15 by shcohen          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,6 @@ INC = includes
 SRC_DIR = sources
 
 SRC = main.c \
-	ft_window.c \
 	ft_check_map.c
 
 SRC := $(addprefix $(SRC_DIR)/,$(SRC))

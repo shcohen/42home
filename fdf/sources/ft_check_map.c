@@ -6,29 +6,25 @@
 /*   By: shcohen <shcohen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 13:27:18 by shcohen           #+#    #+#             */
-/*   Updated: 2018/12/03 17:53:20 by shcohen          ###   ########.fr       */
+/*   Updated: 2018/12/03 19:22:40 by shcohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-int     **ft_check_map(int fd)
+int     **ft_check_map(int fd, int width, int height)
 {
     char    *line;  // GNL (current line)
     char    *str;   // content of file
     char    **arr;  // lines
-    int     **tab;  // final array   
+    int     **tab;  // final array
     int     i;
     int     j;
     int     k;
-    int     width;
-    int     height;
 
-    k = 0;
     height = 0;
     str = NULL;
-    // read file and fill content
-    while (get_next_line(fd, &line)) 
+    while (get_next_line(fd, &line))                // read file and fill content
     {
         i = 0;
         j = 0;
@@ -52,9 +48,9 @@ int     **ft_check_map(int fd)
         height++;
         free(line);                                 // leaks
     }
-    // parse content to lines
+    arr = ft_strsplit(str, '\n');                   // parse content to lines
     i = 0;
-    arr = ft_strsplit(str, '\n');
+    k = 0;
     // parse lines to final array
     if (!(tab = (int **)malloc(sizeof(int *) * (height + 1))))
 		return (NULL);
@@ -69,19 +65,5 @@ int     **ft_check_map(int fd)
                 tab[i][j++] = ft_atoi(arr[i] + k);
         i++;
     }
-    // int y;
-    // int x;
-    // y = 0;
-    // while (y < height)
-    // {
-    //     x = 0;
-    //     while (x < width)
-    //     {
-    //         printf("% 3d ", tab[y][x]);
-    //         x++;
-    //     }
-    //     puts("");
-    //     y++;
-    // }
     return (tab);
 }
