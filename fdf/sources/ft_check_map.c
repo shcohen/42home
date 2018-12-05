@@ -6,23 +6,22 @@
 /*   By: shcohen <shcohen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 13:27:18 by shcohen           #+#    #+#             */
-/*   Updated: 2018/12/03 19:22:40 by shcohen          ###   ########.fr       */
+/*   Updated: 2018/12/05 18:11:20 by shcohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-int     **ft_check_map(int fd, int width, int height)
+t_all     *ft_check_map(int fd, t_all *all)
 {
-    char    *line;  // GNL (current line)
+    char    *line;  // current line
     char    *str;   // content of file
     char    **arr;  // lines
-    int     **tab;  // final array
     int     i;
     int     j;
     int     k;
 
-    height = 0;
+    all->map.height = 0;
     str = NULL;
     while (get_next_line(fd, &line))                // read file and fill content
     {
@@ -37,33 +36,43 @@ int     **ft_check_map(int fd, int width, int height)
             i++;
         }
         if (!str)
-            width = j;
-        else if (j != width)
+            all->map.width = j;
+        else if (j != all->map.width)
             exit(1);
         if (str == NULL)
             str = ft_strnew(1);
         else
             str = ft_strjoin(str, "\n");
         str = ft_strjoin(str, line);
-        height++;
+        all->map.height++;
         free(line);                                 // leaks
     }
     arr = ft_strsplit(str, '\n');                   // parse content to lines
     i = 0;
     k = 0;
-    // parse lines to final array
-    if (!(tab = (int **)malloc(sizeof(int *) * (height + 1))))
+    if (!(all->map.tab = (int **)malloc(sizeof(int *) * (all->map.height + 1))))
 		return (NULL);
-    while (i < height || (tab[i] = NULL))           // columns
+    while (i < all->map.height || (all->map.tab[i] = NULL))   // columns
     {
         j = 0;
-        if (!(tab[i] = (int *)malloc(sizeof(int) * width)))
+        if (!(all->map.tab[i] = (int *)malloc(sizeof(int) * all->map.width)))
 		    return (NULL);
         k = -1;
-        while (arr[i] && arr[i][++k] && j < width)   // fill content
+        while (arr[i] && arr[i][++k] && j < all->map.width)   // parse lines to final array
             if (arr[i][k] >= '0' && arr[i][k] <= '9' && (!k || arr[i][k - 1] == ' '))
-                tab[i][j++] = ft_atoi(arr[i] + k);
+                all->map.tab[i][j++] = ft_atoi(arr[i] + k);
         i++;
     }
-    return (tab);
+    // i = 0;
+    // while (i < all->map.height)
+    // {
+    //     j = 0;
+    //     while (j < all->map.width)
+    //     {
+    //         printf("tab = %d\n", all->map.tab[i][j]);
+    //         j++;
+    //     }
+    //     i++;
+    // }
+    return (all); // final array
 }
