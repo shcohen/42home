@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_check_map.c                                     :+:      :+:    :+:   */
+/*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shcohen <shcohen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 13:27:18 by shcohen           #+#    #+#             */
-/*   Updated: 2018/12/05 18:11:20 by shcohen          ###   ########.fr       */
+/*   Updated: 2018/12/07 18:48:59 by shcohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,16 +63,5 @@ t_all     *ft_check_map(int fd, t_all *all)
                 all->map.tab[i][j++] = ft_atoi(arr[i] + k);
         i++;
     }
-    // i = 0;
-    // while (i < all->map.height)
-    // {
-    //     j = 0;
-    //     while (j < all->map.width)
-    //     {
-    //         printf("tab = %d\n", all->map.tab[i][j]);
-    //         j++;
-    //     }
-    //     i++;
-    // }
     return (all); // final array
 }

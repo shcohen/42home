@@ -6,7 +6,7 @@
 /*   By: shcohen <shcohen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/27 15:37:46 by shcohen           #+#    #+#             */
-/*   Updated: 2018/12/05 18:11:09 by shcohen          ###   ########.fr       */
+/*   Updated: 2018/12/07 18:47:28 by shcohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ typedef struct      s_all
     t_map           map;
 }                   t_all;
 
-t_all          *ft_check_map(int fd, t_all *all);
-// int         ft_create_window(int x, int y);
-// int         ft_bresenham(int x1, int x2, int y1, int y2);
-// int         ft_put_pixel(int x1, int y1);
+t_all           *ft_check_map(int fd, t_all *all);
+int             ft_create_window(t_all *all);
+int             ft_bresenham(int x1, int x2, int y1, int y2);
+int             ft_put_pixel(int x1, int y1);
 
 #endif
