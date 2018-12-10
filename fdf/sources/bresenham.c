@@ -6,35 +6,57 @@
 /*   By: shcohen <shcohen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 14:03:04 by shcohen           #+#    #+#             */
-/*   Updated: 2018/12/07 18:49:27 by shcohen          ###   ########.fr       */
+/*   Updated: 2018/12/10 19:55:31 by shcohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-int     ft_bresenham(int x1, int x2, int y1, int y2)
+int     ft_bresenham(t_all *all)
 {
-    int     dx;
-    int     dy;
-    int     e;              // valeur d'erreur
+    all->bres.ey = abs(all->bres.y2 - all->bres.y1); // erreur
+    all->bres.ex = abs(all->bres.x2 - all->bres.x1); // erreur
+    all->bres.dy = 2 * all->bres.ey;
+    all->bres.dx = 2 * all->bres.ex;
+    // all->bres.dx = all->bres.ex;
+    // all->bres.dy = all->bres.ey;
+    all->bres.i = 0;
+    all->bres.xincr = 1;
+    all->bres.yincr = 1;
 
-    e = x2 - x1;            // -e(0,1)
-    dx = e * 2;             // -e(0,1)
-    dy = (y2 - y1) * 2;     // e(1,0)
-    while (x1 <= x2)
+    if (all->bres.x1 > all->bres.x2)
+        all->bres.xincr = -1;
+    if (all->bres.y1 > all->bres.y2)
+        all->bres.yincr = -1;
+    if (all->bres.dx > all->bres.dy)                // 1er cas
     {
-        ft_put_pixel(x1, y1);
-        x1 = x1 + 1;        // colonne du pixel suivant
-        if ((e = e - dy) <= 0)
-        {                   // erreur pour le pixel suivant de même rangée
-            y1 = y1 + 1;    // choisir plutôt le pixel suivant dans la rangée supérieure
-            e = e + dx;     // ajuste l’erreur commise dans cette nouvelle rangée
+        while (all->bres.i <= all->bres.dx)
+        {
+            mlx_pixel_put(all->win.mlx_ptr, all->win.win_ptr, all->bres.x1, all->bres.y1, 0xFFFFFF);
+            all->bres.i++;
+            all->bres.x1 += all->bres.xincr;
+            all->bres.ex -= all->bres.dy;
+            if (all->bres.ex < 0)
+            {
+                all->bres.y1 += all->bres.yincr;
+                all->bres.ex += all->bres.dx;
+            }
         }
-     }                      // le pixel final (x2, y2) n’est pas tracé.
+    }
+    else                                            // 2nd cas
+    {
+        while (all->bres.i <= all->bres.dy)
+        {
+            mlx_pixel_put(all->win.mlx_ptr, all->win.win_ptr, all->bres.x1, all->bres.y1, 0xFFFFFF);
+            all->bres.i++;
+            all->bres.y1 += all->bres.yincr;
+            all->bres.ey -= all->bres.dx;
+            if (all->bres.ey < 0)
+            {
+                all->bres.x1 += all->bres.xincr;
+                all->bres.ey += all->bres.dy;
+            }
+        }
+    }
     return (0);
-}
-
-int     ft_put_pixel(int x1, int y2)
-{
-    return(0);
 }

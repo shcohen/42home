@@ -6,7 +6,7 @@
 /*   By: shcohen <shcohen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 13:27:33 by shcohen           #+#    #+#             */
-/*   Updated: 2018/12/07 18:48:43 by shcohen          ###   ########.fr       */
+/*   Updated: 2018/12/10 19:49:45 by shcohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 int     ft_create_window(t_all *all)
 {
-	void	*mlx_ptr;
-	void	*win_ptr;
 	int		x;
 	int		y;
 	int		ex;
@@ -25,13 +23,18 @@ int     ft_create_window(t_all *all)
 	y = 0;
 	ex = 100;
 	ey = 100;
-	mlx_ptr = mlx_init();
-	win_ptr = mlx_new_window(mlx_ptr, 500, 500, "fdf");
+	all->win.mlx_ptr = mlx_init();
+	all->win.win_ptr = mlx_new_window(all->win.mlx_ptr, 500, 500, "fdf");
 	while (y < all->map.height)
 	{
 		while (x < all->map.width)
 		{
-			mlx_pixel_put(mlx_ptr, win_ptr, (x + ex), (y + ey), 0xFFFFFF);
+			all->bres.x1 = x * ey;
+			all->bres.y1 = y * ey;
+			all->bres.x2 = (x + 1) * ey;
+			all->bres.y2 = (y + 1) * ey;
+			ft_bresenham(all);
+			mlx_pixel_put(all->win.mlx_ptr, all->win.win_ptr, (x + ex), (y + ey), 0xFFFFFF);
 			x++;
 			ex += 10;
 		}
@@ -40,6 +43,6 @@ int     ft_create_window(t_all *all)
 		y++;
 		ey += 10;
 	}
-	mlx_loop(mlx_ptr);
+	mlx_loop(all->win.mlx_ptr);
     return (0);
 }
