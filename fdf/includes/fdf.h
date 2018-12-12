@@ -6,7 +6,7 @@
 /*   By: shcohen <shcohen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/27 15:37:46 by shcohen           #+#    #+#             */
-/*   Updated: 2018/12/11 19:36:19 by shcohen          ###   ########.fr       */
+/*   Updated: 2018/12/12 19:33:30 by shcohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,6 @@ typedef struct      s_all
 t_all           *ft_check_map(int fd, t_all *all);
 int             ft_create_window(t_all *all);
 int             ft_bresenham(t_all *all);
+// void            ft_display(void);
 
 #endif

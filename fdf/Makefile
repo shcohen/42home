@@ -6,7 +6,7 @@
 #    By: shcohen <shcohen@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/22 15:42:25 by shcohen           #+#    #+#              #
-#    Updated: 2018/12/07 18:46:39 by shcohen          ###   ########.fr        #
+#    Updated: 2018/12/12 19:32:58 by shcohen          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ SRC_DIR = sources
 SRC = main.c \
 	check_map.c \
 	window.c \
-	bresenham.c
+	bresenham.c \
+	# display.c
 
 SRC := $(addprefix $(SRC_DIR)/,$(SRC))
 

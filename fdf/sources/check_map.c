@@ -6,7 +6,7 @@
 /*   By: shcohen <shcohen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 13:27:18 by shcohen           #+#    #+#             */
-/*   Updated: 2018/12/11 19:36:16 by shcohen          ###   ########.fr       */
+/*   Updated: 2018/12/12 19:15:48 by shcohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_all     *ft_check_map(int fd, t_all *all)
 
     all->map.height = 0;
     str = NULL;
-    while (get_next_line(fd, &line))                // read file and fill content
+    while (get_next_line(fd, &line))    // read file and fill content
     {
         i = 0;
         j = 0;
@@ -45,23 +45,23 @@ t_all     *ft_check_map(int fd, t_all *all)
             str = ft_strjoin(str, "\n");
         str = ft_strjoin(str, line);
         all->map.height++;
-        free(line);                                 // leaks
+        free(line); // leaks
     }
-    arr = ft_strsplit(str, '\n');                   // parse content to lines
+    arr = ft_strsplit(str, '\n');   // parsing content to lines
     i = 0;
     k = 0;
     if (!(all->map.tab = (int **)malloc(sizeof(int *) * (all->map.height + 1))))
 		return (NULL);
-    while (i < all->map.height || (all->map.tab[i] = NULL))   // columns
+    while (i < all->map.height || (all->map.tab[i] = NULL)) // columns
     {
         j = 0;
         if (!(all->map.tab[i] = (int *)malloc(sizeof(int) * all->map.width)))
 		    return (NULL);
         k = -1;
-        while (arr[i] && arr[i][++k] && j < all->map.width)   // parse lines to final array
+        while (arr[i] && arr[i][++k] && j < all->map.width) // parsing lines to array
             if (arr[i][k] >= '0' && arr[i][k] <= '9' && (!k || arr[i][k - 1] == ' '))
                 all->map.tab[i][j++] = ft_atoi(arr[i] + k);
         i++;
     }
-    return (all); // final array
+    return (all);   // final array
 }

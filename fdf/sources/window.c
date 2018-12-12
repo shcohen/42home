@@ -6,7 +6,7 @@
 /*   By: shcohen <shcohen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 13:27:33 by shcohen           #+#    #+#             */
-/*   Updated: 2018/12/12 17:34:57 by shcohen          ###   ########.fr       */
+/*   Updated: 2018/12/12 19:16:04 by shcohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ int     ft_create_window(t_all *all)
 {
 	int		x;
 	int		y;
+	int		win;	// window's dimensions
+	int		ey;		// putting correct space between values
 	double	ex;
-	int		ey;
-	int		win;
 
 	win = 1000;
 	y = 0;
-	ex = 5 * 1.732;
+	ex = 5 * 1.732; // isometric projection
 	ey = 5;
 	all->win.mlx_ptr = mlx_init();
 	all->win.win_ptr = mlx_new_window(all->win.mlx_ptr, win, win, "fdf");
