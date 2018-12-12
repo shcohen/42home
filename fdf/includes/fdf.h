@@ -6,7 +6,7 @@
 /*   By: shcohen <shcohen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/27 15:37:46 by shcohen           #+#    #+#             */
-/*   Updated: 2018/12/10 19:55:26 by shcohen          ###   ########.fr       */
+/*   Updated: 2018/12/11 19:36:19 by shcohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,17 +32,18 @@ typedef struct      s_win
 
 typedef struct      s_bres
 {
-    int             x1;
-    int             x2;
-    int             y1;
-    int             y2;
+    int             i;
+    int             x;
+    int             y;
+    int             xi;
+    int             xf;
+    int             yi;
+    int             yf;
     int             dx;
     int             dy;
-    int             ex;
-    int             ey;
-    int             xincr;
-    int             yincr;
-    int             i;
+    int             xinc;
+    int             yinc;
+    int             cumul;
 }                   t_bres;
 
 typedef struct      s_all
