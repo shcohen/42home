@@ -1,3 +1,3 @@
 # 42home
 
-all of my work from 42.
+all of my work projects from 42.
