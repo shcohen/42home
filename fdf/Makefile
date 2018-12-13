@@ -6,12 +6,12 @@
 #    By: shcohen <shcohen@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/22 15:42:25 by shcohen           #+#    #+#              #
-#    Updated: 2018/12/12 19:32:58 by shcohen          ###   ########.fr        #
+#    Updated: 2018/12/13 19:23:25 by shcohen          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fdf
-FLAGS = -Wall -Wextra #-Werror
+FLAGS = -Wall -Wextra -Werror
 
 INC = includes
 
@@ -21,7 +21,8 @@ SRC = main.c \
 	check_map.c \
 	window.c \
 	bresenham.c \
-	# display.c
+	event.c \
+	draw.c 
 
 SRC := $(addprefix $(SRC_DIR)/,$(SRC))
 

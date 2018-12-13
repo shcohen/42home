@@ -6,7 +6,7 @@
 /*   By: shcohen <shcohen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 13:27:18 by shcohen           #+#    #+#             */
-/*   Updated: 2018/12/12 19:15:48 by shcohen          ###   ########.fr       */
+/*   Updated: 2018/12/13 19:42:19 by shcohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ t_all     *ft_check_map(int fd, t_all *all)
         j = 0;
         while (line && line[i])
         {
-            if (line[i] >= '0' && line[i] <= '9' && (!i || line[i - 1] == ' '))
+            if ((line[i] >= '0' && line[i] <= '9' && (!i || line[i - 1] == ' ')) || line[i] == '-')
                 j++;
-            if (!(ft_isdigit(line[i])) && line[i] != ' ' && line[i] != '\n')
+            if (!(ft_isdigit(line[i])) && line[i] != ' ' && line[i] != '\n' && line[i] != '-')
                 return (NULL);
             i++;
         }

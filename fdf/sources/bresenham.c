@@ -6,13 +6,13 @@
 /*   By: shcohen <shcohen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 14:03:04 by shcohen           #+#    #+#             */
-/*   Updated: 2018/12/12 19:11:56 by shcohen          ###   ########.fr       */
+/*   Updated: 2018/12/13 19:36:15 by shcohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-int     ft_bresenham(t_all *all)
+void     ft_bresenham(t_all *all, int z)
 {
     all->bres.x = all->bres.xi;
     all->bres.y = all->bres.yi;
@@ -22,7 +22,12 @@ int     ft_bresenham(t_all *all)
     all->bres.yinc = (all->bres.dy > 0) ? 1 : -1;
     all->bres.dx = abs(all->bres.dx);
     all->bres.dy = abs(all->bres.dy);
-    mlx_pixel_put(all->win.mlx_ptr, all->win.win_ptr, (all->bres.x), (all->bres.y), 0xFFFFFF);
+    ft_bres1(all, z);
+}
+
+void     ft_bres1(t_all *all, int z)
+{
+
     if (all->bres.dx > all->bres.dy)
     {
         all->bres.cumul = all->bres.dx / 2;
@@ -37,10 +42,14 @@ int     ft_bresenham(t_all *all)
                 all->bres.cumul -= all->bres.dx;
                 all->bres.y += all->bres.yinc;
             } 
-            mlx_pixel_put(all->win.mlx_ptr, all->win.win_ptr, (all->bres.x), (all->bres.y), 0xFFFFFF);
+            ft_fill_pixel(all, ft_colors(all, z));
         }
     }
-    else
+    ft_bres2(all, z);
+}
+void     ft_bres2(t_all *all, int z)
+{
+    if (all->bres.dy > all->bres.dx)
     {
         all->bres.cumul = all->bres.dy / 2;
         all->bres.i = 1;
@@ -54,8 +63,7 @@ int     ft_bresenham(t_all *all)
                 all->bres.cumul -= all->bres.dy;
                 all->bres.x += all->bres.xinc;
             }
-            mlx_pixel_put(all->win.mlx_ptr, all->win.win_ptr, (all->bres.x), (all->bres.y), 0xFFFFFF);
+            ft_fill_pixel(all, ft_colors(all, z));
         }
     }
-    return (0);
 }

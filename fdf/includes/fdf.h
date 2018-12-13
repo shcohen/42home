@@ -6,7 +6,7 @@
 /*   By: shcohen <shcohen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/27 15:37:46 by shcohen           #+#    #+#             */
-/*   Updated: 2018/12/12 19:33:30 by shcohen          ###   ########.fr       */
+/*   Updated: 2018/12/13 19:42:28 by shcohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,16 @@ typedef struct      s_win
 {
     void            *mlx_ptr;
     void            *win_ptr;
+    void            *img_ptr;
+    int             *img_str;
+    int             width;
+    int             height;
+    double	        ey;
+	double	        ex;
+    double          ez;
+    int             ud; // up-down in y
+    int             rl; // right-left in x
+    int             color_choice; // dispay colors
 }                   t_win;
 
 typedef struct      s_bres
@@ -53,9 +63,14 @@ typedef struct      s_all
     t_bres          bres;
 }                   t_all;
 
-t_all           *ft_check_map(int fd, t_all *all);
 int             ft_create_window(t_all *all);
-int             ft_bresenham(t_all *all);
-// void            ft_display(void);
+int             ft_key(int key, t_all *all);
+int             ft_colors(t_all *all, int z);
+void            ft_bresenham(t_all *all, int z);
+void            ft_bres1(t_all *all, int z);
+void            ft_bres2(t_all *all, int z);
+void            ft_display(t_all *all);
+void            ft_fill_pixel(t_all *all, int color);
+t_all           *ft_check_map(int fd, t_all *all);
 
 #endif

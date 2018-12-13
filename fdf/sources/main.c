@@ -6,13 +6,13 @@
 /*   By: shcohen <shcohen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/27 13:24:39 by shcohen           #+#    #+#             */
-/*   Updated: 2018/12/12 17:47:14 by shcohen          ###   ########.fr       */
+/*   Updated: 2018/12/13 19:19:54 by shcohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-int		main(int argc, char **argv) // map en bzero
+int		main(int argc, char **argv)
 {
 	t_all	*all;
 	int		fd;
@@ -24,6 +24,8 @@ int		main(int argc, char **argv) // map en bzero
 		fd = open(argv[1], O_RDONLY);
 		ft_check_map(fd, all);
 		ft_create_window(all);
+		mlx_hook(all->win.win_ptr, 2, (1L << 0), &ft_key, all);
+		mlx_loop(all->win.mlx_ptr);
 	}
 	else
 		ft_putstr("usage : only two arguments authorized.");
