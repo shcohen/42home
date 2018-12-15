@@ -6,13 +6,13 @@
 /*   By: shcohen <shcohen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 13:27:33 by shcohen           #+#    #+#             */
-/*   Updated: 2018/12/13 19:43:21 by shcohen          ###   ########.fr       */
+/*   Updated: 2018/12/15 16:48:08 by shcohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-void		ft_display(t_all *all)
+void	ft_display(t_all *all)
 {
 	int	x;
 	int	y;
@@ -23,24 +23,33 @@ void		ft_display(t_all *all)
 		x = 0;
 		while (x < all->map.width)
 		{
-			all->bres.xi = ((x - y) + (all->map.height / 2 - all->map.width / 2)) 
+			all->bres.xi = ((x - y) 
+				+ (all->map.height / 2 - all->map.width / 2)) 
 				* all->win.ex + (all->win.width / 2) + all->win.rl;
-			all->bres.yi = ((x + y) - (all->map.height / 2 + all->map.width / 2)) 
-				* all->win.ey + (all->win.height / 2) - all->map.tab[y][x] * all->win.ez + all->win.ud;
+			all->bres.yi = ((x + y) 
+				- (all->map.height / 2 + all->map.width / 2)) 
+				* all->win.ey + (all->win.height / 2) - (double)all->map.tab[y][x] 
+				* all->win.ez + all->win.ud;
 			if (x < all->map.width - 1)
 			{
-				all->bres.xf = (((x + 1) - y) + (all->map.height / 2 - all->map.width / 2)) 
-					* all->win.ex + all->win.width / 2 + all->win.rl;
-				all->bres.yf = (((x + 1) + y) - (all->map.height / 2 + all->map.width / 2)) 
-					* all->win.ey + all->win.height / 2 - all->map.tab[y][x + 1] * all->win.ez + all->win.ud;
+				all->bres.xf = (((x + 1) - y) + (all->map.height / 2 
+					- all->map.width / 2)) * all->win.ex 
+					+ all->win.width / 2 + all->win.rl;
+				all->bres.yf = (((x + 1) + y) 
+					- (all->map.height / 2 + all->map.width / 2)) 
+					* all->win.ey + all->win.height / 2 - (double)all->map.tab[y][x + 1] 
+					* all->win.ez + all->win.ud;
 				ft_bresenham(all, all->map.tab[y][x]);
 			}
 			if (y < all->map.height - 1)
 			{
-				all->bres.xf = ((x - (y + 1)) + (all->map.height / 2 - all->map.width / 2)) 
+				all->bres.xf = ((x - (y + 1)) 
+					+ (all->map.height / 2 - all->map.width / 2)) 
 					* all->win.ex + all->win.width / 2 + all->win.rl;
-				all->bres.yf = ((x + (y + 1)) - (all->map.height / 2 + all->map.width / 2)) 
-					* all->win.ey + all->win.height / 2 - all->map.tab[y + 1][x] * all->win.ez + all->win.ud;
+				all->bres.yf = ((x + (y + 1)) 
+					- (all->map.height / 2 + all->map.width / 2)) 
+					* all->win.ey + all->win.height / 2 - (double)all->map.tab[y + 1][x] 
+					* all->win.ez + all->win.ud;
 				ft_bresenham(all, all->map.tab[y][x]);
 			}
 			x++;

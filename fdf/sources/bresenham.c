@@ -6,7 +6,7 @@
 /*   By: shcohen <shcohen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 14:03:04 by shcohen           #+#    #+#             */
-/*   Updated: 2018/12/13 19:36:15 by shcohen          ###   ########.fr       */
+/*   Updated: 2018/12/15 16:20:58 by shcohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,13 @@ void     ft_bresenham(t_all *all, int z)
     all->bres.dy = all->bres.yf - all->bres.yi;
     all->bres.xinc = (all->bres.dx > 0) ? 1 : -1;
     all->bres.yinc = (all->bres.dy > 0) ? 1 : -1;
-    all->bres.dx = abs(all->bres.dx);
-    all->bres.dy = abs(all->bres.dy);
+    all->bres.dx = fabs(all->bres.dx);
+    all->bres.dy = fabs(all->bres.dy);
     ft_bres1(all, z);
 }
 
 void     ft_bres1(t_all *all, int z)
 {
-
     if (all->bres.dx > all->bres.dy)
     {
         all->bres.cumul = all->bres.dx / 2;
