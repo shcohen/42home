@@ -6,7 +6,7 @@
 /*   By: shcohen <shcohen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 13:27:33 by shcohen           #+#    #+#             */
-/*   Updated: 2018/12/19 18:12:05 by shcohen          ###   ########.fr       */
+/*   Updated: 2018/12/19 20:36:14 by shcohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,10 @@ int		ft_create_window(t_all *all)
 
 	all->win.height = 1080;
 	all->win.width = 1920;
-	all->win.ex = (all->map.width + all->map.height) * all->win.width / 1000;
-	all->win.ey = (all->map.width + all->map.height) * all->win.height / 1000;
-	all->win.ez = (all->map.width + all->map.height) * all->win.height / 5000;
+	all->win.ex = all->win.width / (all->map.width + all->map.height)
+		/ 2 * 1.732; // isometric projection
+	all->win.ey = all->win.width / (all->map.width + all->map.height) / 2;
+	all->win.ez = all->win.width / (all->map.height + all->map.width) / 5;
 	all->win.mlx_ptr = mlx_init();
 	all->win.win_ptr = mlx_new_window(all->win.mlx_ptr, all->win.width,
 	all->win.height, "fdf");

@@ -6,7 +6,7 @@
 /*   By: shcohen <shcohen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 13:27:18 by shcohen           #+#    #+#             */
-/*   Updated: 2018/12/18 14:02:39 by shcohen          ###   ########.fr       */
+/*   Updated: 2018/12/19 21:41:45 by shcohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,7 @@ t_all		*ft_parse_map(char *file, t_all *all)
 {
 	char	*line;
 	int		fd1;
-	int		fd2;
-	int		i;
-
+	
 	if ((fd1 = open(file, O_RDONLY)) < 0)
 		return (NULL);
 	all->map.height = 0;
@@ -89,14 +87,24 @@ t_all		*ft_parse_map(char *file, t_all *all)
 		* (all->map.height + 1))))
 		return (NULL);
 	close(fd1);
-	ft_parse_map(line, all);
-	if ((fd2 = open(file, O_RDONLY)) < 0)
+	if (!ft_parse_map2(file, all))
 		return (NULL);
+	return (all);
+}
+
+int		ft_parse_map2(char *file, t_all *all)
+{
+	char	*line;
+	int		fd2;
+	int		i;	
+
+	if ((fd2 = open(file, O_RDONLY)) < 0)
+		return (0);
 	i = 0;
 	while (get_next_line(fd2, &line) > 0)
 	{
 		if (!ft_check(line))
-			return (NULL);
+			return (0);
 		all->map.tab[i] = ft_intsplit(line, ' ');
 		all->map.width = ft_count(line, ' ');
 		free(line);
@@ -104,5 +112,5 @@ t_all		*ft_parse_map(char *file, t_all *all)
 	}
 	all->map.tab[i] = NULL;
 	close(fd2);
-	return (all);
+	return (1);
 }

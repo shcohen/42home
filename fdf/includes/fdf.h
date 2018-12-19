@@ -6,7 +6,7 @@
 /*   By: shcohen <shcohen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/27 15:37:46 by shcohen           #+#    #+#             */
-/*   Updated: 2018/12/19 17:57:32 by shcohen          ###   ########.fr       */
+/*   Updated: 2018/12/19 21:40:15 by shcohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,12 +71,8 @@ void				ft_bres2(t_all *all, int z);
 void				ft_iso(t_all *all);
 void				ft_iso_x(t_all *all, int x, int y);
 void				ft_iso_y(t_all *all, int x, int y);
-
 void				ft_para(t_all *all);
-void				ft_para1(t_all *all, int x, int y, int z);
-// void				ft_para_x(t_all *all, int x, int y);
-// void				ft_para_y(t_all *all, int x, int y);
-
+void				ft_para1(t_all *all, int x, int y);
 void				ft_array(t_all *all);
 void				ft_fill_pixel(t_all *all, int color);
 int					ft_create_window(t_all *all);
@@ -88,5 +84,6 @@ int					ft_key2(int key, t_all *all);
 int					ft_key3(int key, t_all *all);
 int					*ft_intsplit(char *str, char c);
 t_all				*ft_parse_map(char *file, t_all *all);
+int					ft_parse_map2(char *file, t_all *all);
 
 #endif

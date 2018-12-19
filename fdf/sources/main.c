@@ -6,7 +6,7 @@
 /*   By: shcohen <shcohen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/27 13:24:39 by shcohen           #+#    #+#             */
-/*   Updated: 2018/12/19 18:10:45 by shcohen          ###   ########.fr       */
+/*   Updated: 2018/12/19 21:37:56 by shcohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,6 @@ int		main(int argc, char **argv)
 		mlx_loop(all->win.mlx_ptr);
 	}
 	else
-		ft_putstr("usage : only two arguments authorized.");
+		ft_putstr("usage : ./fdf <map_file>");
 	return (0);
 }

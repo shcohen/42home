@@ -6,7 +6,7 @@
 /*   By: shcohen <shcohen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/13 16:11:08 by shcohen           #+#    #+#             */
-/*   Updated: 2018/12/19 18:10:48 by shcohen          ###   ########.fr       */
+/*   Updated: 2018/12/19 21:58:42 by shcohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,10 @@ int		ft_key1(int key, t_all *all)
 	if (key == 34 || key == 15) // set or reset isometric projection
 	{
 		all->win.proj = 'i';
-		all->win.ex = (all->map.width + all->map.height)
-					* all->win.width / 1000;
-		all->win.ey = (all->map.width + all->map.height)
-					* all->win.height / 1000;
-		all->win.ez = (all->map.width + all->map.height)
-					* all->win.height / 5000;
+		all->win.ex = all->win.width / (all->map.width + all->map.height)
+						/ 2 * 1.732;
+		all->win.ey = all->win.width / (all->map.width + all->map.height) / 2;
+		all->win.ez = all->win.width / (all->map.height + all->map.width) / 5;
 		all->win.ud = 0;
 		all->win.rl = 0;
 		all->win.color_choice = 0;
@@ -55,14 +53,13 @@ int		ft_key2(int key, t_all *all)
 {
 	if (key == 35 || key == 49) // set or reset parallel projection
 	{
-	   	all->win.proj = 'p';
-		all->win.ex = (all->map.width + all->map.height) * all->win.width / 2;
-		all->win.ey = (all->map.width + all->map.height) * all->win.height / 2;
-		all->win.ez = (all->map.width + all->map.height) 
-					* all->win.height / 5;
-	    all->win.ud = 0;
-	    all->win.rl = 0;
-	    all->win.color_choice = 0;
+		all->win.proj = 'p';
+		all->win.ex = all->win.width / (all->map.width + all->map.height) / 2;
+		all->win.ey = all->win.width / (all->map.width + all->map.height) / 2;
+		all->win.ez = all->win.width / (all->map.height + all->map.width) / 5;
+		all->win.ud = all->win.height / (all->map.height + all->map.width);
+		all->win.rl = (all->win.width + all->win.height) / 3;
+		all->win.color_choice = 0;
 	}
 	ft_key3(key, all);
 	return (0);
