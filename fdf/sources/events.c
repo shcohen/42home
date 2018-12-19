@@ -6,7 +6,7 @@
 /*   By: shcohen <shcohen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/13 16:11:08 by shcohen           #+#    #+#             */
-/*   Updated: 2018/12/18 14:29:28 by shcohen          ###   ########.fr       */
+/*   Updated: 2018/12/19 18:10:48 by shcohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,28 +36,39 @@ int		ft_key1(int key, t_all *all)
 {
 	if (key == 34 || key == 15) // set or reset isometric projection
 	{
-		all->win.ex = all->win.width / (all->map.width + all->map.height) / 2
-			* 1.732;
-		all->win.ey = all->win.width / (all->map.width + all->map.height) / 2;
-		all->win.ez = all->win.width / (all->map.height + all->map.width) / 5;
+		all->win.proj = 'i';
+		all->win.ex = (all->map.width + all->map.height)
+					* all->win.width / 1000;
+		all->win.ey = (all->map.width + all->map.height)
+					* all->win.height / 1000;
+		all->win.ez = (all->map.width + all->map.height)
+					* all->win.height / 5000;
 		all->win.ud = 0;
 		all->win.rl = 0;
 		all->win.color_choice = 0;
 	}
-	// if (key == 35 || key == 49) // set or reset parallel projection
-	// {
-	//     all->win.ex = all->win.width / 2;
-	//     all->win.ey = all->win.width / 2;
-	//     all->win.ez = all->win.width / 5;
-	//     all->win.ud = 0;
-	//     all->win.rl = 0;
-	//     all->win.color_choice = 0;
-	// }
 	ft_key2(key, all);
 	return (0);
 }
 
 int		ft_key2(int key, t_all *all)
+{
+	if (key == 35 || key == 49) // set or reset parallel projection
+	{
+	   	all->win.proj = 'p';
+		all->win.ex = (all->map.width + all->map.height) * all->win.width / 2;
+		all->win.ey = (all->map.width + all->map.height) * all->win.height / 2;
+		all->win.ez = (all->map.width + all->map.height) 
+					* all->win.height / 5;
+	    all->win.ud = 0;
+	    all->win.rl = 0;
+	    all->win.color_choice = 0;
+	}
+	ft_key3(key, all);
+	return (0);
+}
+
+int		ft_key3(int key, t_all *all)
 {
 	if (key == 67)
 		all->win.ez += 0.2;
@@ -74,7 +85,10 @@ int		ft_key2(int key, t_all *all)
 	else if (key == 8)
 		all->win.color_choice = (all->win.color_choice + 1) % 3;
 	ft_bzero(all->win.img_str, all->win.height * all->win.width * sizeof(int));
-	ft_display(all);
+	if (all->win.proj == 'i')
+		ft_iso(all);
+	else
+		ft_para(all);
 	mlx_put_image_to_window(all->win.mlx_ptr, all->win.win_ptr,
 		all->win.img_ptr, 0, 0);
 	ft_array(all);

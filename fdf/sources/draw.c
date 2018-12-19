@@ -6,7 +6,7 @@
 /*   By: shcohen <shcohen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/13 19:19:40 by shcohen           #+#    #+#             */
-/*   Updated: 2018/12/18 15:19:26 by shcohen          ###   ########.fr       */
+/*   Updated: 2018/12/19 17:32:57 by shcohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_fill_pixel(t_all *all, int color)
 {
 	if (all->bres.x >= 0 && all->bres.y >= 0 && all->bres.x < all->win.width
-			&& all->bres.y < all->win.height)
+		&& all->bres.y < all->win.height)
 		all->win.img_str[(int)(all->bres.y
 			* all->win.width + all->bres.x)] = color;
 }
@@ -57,17 +57,19 @@ void	ft_array(t_all *all)
 	mlx_string_put(all->win.mlx_ptr, all->win.win_ptr, 5, 40,
 			0xFFFFFF, "\n| press * to inc. or / to dec. depth |");
 	mlx_string_put(all->win.mlx_ptr, all->win.win_ptr, 5, 60,
-			0xFFFFFF, "\n|                                    |");
+			0xFFFFFF, "\n|  press 'c' to change color panel   |");
 	mlx_string_put(all->win.mlx_ptr, all->win.win_ptr, 5, 80,
-			0xFFFFFF, "\n|                 ^                  |");
-	mlx_string_put(all->win.mlx_ptr, all->win.win_ptr, 5, 100,
-			0xFFFFFF, "\n|        press  <   >  to move       |");
-	mlx_string_put(all->win.mlx_ptr, all->win.win_ptr, 5, 120,
-			0xFFFFFF, "\n|                 v                  |");
-	mlx_string_put(all->win.mlx_ptr, all->win.win_ptr, 5, 140,
 			0xFFFFFF, "\n|                                    |");
+	mlx_string_put(all->win.mlx_ptr, all->win.win_ptr, 5, 100,
+			0xFFFFFF, "\n|                 ^                  |");
+	mlx_string_put(all->win.mlx_ptr, all->win.win_ptr, 5, 120,
+			0xFFFFFF, "\n|        press  <   >  to move       |");
+	mlx_string_put(all->win.mlx_ptr, all->win.win_ptr, 5, 140,
+			0xFFFFFF, "\n|                 v                  |");
 	mlx_string_put(all->win.mlx_ptr, all->win.win_ptr, 5, 160,
-			0xFFFFFF, "\n|      press 'esc' to shut down      |");
+			0xFFFFFF, "\n|                                    |");
 	mlx_string_put(all->win.mlx_ptr, all->win.win_ptr, 5, 180,
+			0xFFFFFF, "\n|      press 'esc' to shut down      |");
+	mlx_string_put(all->win.mlx_ptr, all->win.win_ptr, 5, 200,
 			0xFFFFFF, "\n ------------------------------------\n\n");
 }

@@ -6,7 +6,7 @@
 #    By: shcohen <shcohen@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/22 15:42:25 by shcohen           #+#    #+#              #
-#    Updated: 2018/12/17 14:31:06 by shcohen          ###   ########.fr        #
+#    Updated: 2018/12/18 17:00:40 by shcohen          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,9 @@ SRC_DIR = sources
 SRC = bresenham.c \
 	draw.c \
 	events.c \
+	isometric.c \
 	main.c \
+	parallel.c \
 	parsing.c \
 	window.c
 

@@ -6,7 +6,7 @@
 /*   By: shcohen <shcohen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/27 13:24:39 by shcohen           #+#    #+#             */
-/*   Updated: 2018/12/18 12:06:57 by shcohen          ###   ########.fr       */
+/*   Updated: 2018/12/19 18:10:45 by shcohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,3 @@ int		main(int argc, char **argv)
 		ft_putstr("usage : only two arguments authorized.");
 	return (0);
 }
-
-//  Réduire limite zoom maximum
-// Ne pas faire bresenham quand les 2 points sont en dehors de l'écran
-// (+ point central pour assurer)
-// Limite zoom minimum ?
-// Reset en fonction de la projection
