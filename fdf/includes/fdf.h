@@ -6,7 +6,7 @@
 /*   By: shcohen <shcohen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/27 15:37:46 by shcohen           #+#    #+#             */
-/*   Updated: 2018/12/19 21:40:15 by shcohen          ###   ########.fr       */
+/*   Updated: 2018/12/21 18:38:56 by shcohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,12 @@ typedef struct		s_win
 	int				*img_str;
 	int				width;
 	int				height;
-	double			ey; // space between yi and yf
-	double			ex; // space betweem xi and xf
-	double			ez; // altitude and zoom
-	int				ud; // up-down in y
-	int				rl; // right-left in x
-	int				color_choice; // dispay colors
+	double			ey; // distance between yi and yf
+	double			ex; // distance between xi and xf
+	double			ez; // altitude
+	int				ud; // up-down in x
+	int				rl; // right-left in y
+	int				color_choice; // display colors
 	char			proj; // display wanted projection
 }					t_win;
 
@@ -75,6 +75,7 @@ void				ft_para(t_all *all);
 void				ft_para1(t_all *all, int x, int y);
 void				ft_array(t_all *all);
 void				ft_fill_pixel(t_all *all, int color);
+int					ft_exit(void);
 int					ft_create_window(t_all *all);
 int					ft_colors(t_all *all, int z);
 int					ft_check(char *line);

@@ -6,7 +6,7 @@
 /*   By: shcohen <shcohen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 13:27:18 by shcohen           #+#    #+#             */
-/*   Updated: 2018/12/19 21:41:45 by shcohen          ###   ########.fr       */
+/*   Updated: 2018/12/21 16:31:50 by shcohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,8 @@ int			ft_check(char *line)
 	i = 0;
 	while (line[i])
 	{
-		if (!ft_isdigit(line[i]) && !ft_isalpha(line[i])
-			&& line[i] != ' ' && line[i] != '-' && line[i] != ',')
+		if (!ft_isdigit(line[i]) && line[i] != ' '
+				&& line[i] != '-' && line[i] != ',')
 			return (0);
 		i++;
 	}
@@ -74,7 +74,7 @@ t_all		*ft_parse_map(char *file, t_all *all)
 {
 	char	*line;
 	int		fd1;
-	
+
 	if ((fd1 = open(file, O_RDONLY)) < 0)
 		return (NULL);
 	all->map.height = 0;
@@ -83,8 +83,10 @@ t_all		*ft_parse_map(char *file, t_all *all)
 		all->map.height++;
 		free(line);
 	}
+	if (all->map.height == 0)
+		return (NULL);
 	if (!(all->map.tab = (int **)ft_memalloc(sizeof(int *)
-		* (all->map.height + 1))))
+					* (all->map.height + 1))))
 		return (NULL);
 	close(fd1);
 	if (!ft_parse_map2(file, all))
@@ -92,12 +94,13 @@ t_all		*ft_parse_map(char *file, t_all *all)
 	return (all);
 }
 
-int		ft_parse_map2(char *file, t_all *all)
+int			ft_parse_map2(char *file, t_all *all)
 {
 	char	*line;
 	int		fd2;
-	int		i;	
+	int		i;
 
+	all->map.width = 0;
 	if ((fd2 = open(file, O_RDONLY)) < 0)
 		return (0);
 	i = 0;
@@ -106,7 +109,10 @@ int		ft_parse_map2(char *file, t_all *all)
 		if (!ft_check(line))
 			return (0);
 		all->map.tab[i] = ft_intsplit(line, ' ');
-		all->map.width = ft_count(line, ' ');
+		if (!all->map.width)
+			all->map.width = ft_count(line, ' ');
+		if (!all->map.width || all->map.width != ft_count(line, ' '))
+			return (0);
 		free(line);
 		i++;
 	}

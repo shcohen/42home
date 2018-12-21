@@ -6,7 +6,7 @@
 /*   By: shcohen <shcohen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 18:19:06 by shcohen           #+#    #+#             */
-/*   Updated: 2018/11/27 16:23:17 by shcohen          ###   ########.fr       */
+/*   Updated: 2018/12/21 15:00:55 by shcohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int		get_next_line(const int fd, char **line)
 	while (save && save[i])
 		if ((i = ft_fill_line(line, &save, i)) == -1)
 			return (1);
-	*line = save;
-	save = 0;
+	if (i && (*line = save))
+		save = 0;
 	return (!(!i));
 }

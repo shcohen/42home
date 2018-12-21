@@ -6,7 +6,7 @@
 /*   By: shcohen <shcohen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/13 16:11:08 by shcohen           #+#    #+#             */
-/*   Updated: 2018/12/19 21:58:42 by shcohen          ###   ########.fr       */
+/*   Updated: 2018/12/21 18:42:43 by shcohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ int		ft_key(int key, t_all *all)
 {
 	if (key == 53)
 		exit(0);
-	else if (key == 69)
+	else if (key == 69 && all->win.ex < 130)
 	{
 		all->win.ex *= 1.2;
 		all->win.ey *= 1.2;
 		all->win.ez *= 1.2;
 	}
-	else if (key == 78)
+	else if (key == 78 && all->win.ex > 1.1)
 	{
 		all->win.ex /= 1.2;
 		all->win.ey /= 1.2;
@@ -35,10 +35,10 @@ int		ft_key(int key, t_all *all)
 int		ft_key1(int key, t_all *all)
 {
 	if (key == 34 || key == 15) // set or reset isometric projection
-	{
+	{ // press 'i' or 'r'
 		all->win.proj = 'i';
 		all->win.ex = all->win.width / (all->map.width + all->map.height)
-						/ 2 * 1.732;
+						/ 2 * 1.732; // isometric projection
 		all->win.ey = all->win.width / (all->map.width + all->map.height) / 2;
 		all->win.ez = all->win.width / (all->map.height + all->map.width) / 5;
 		all->win.ud = 0;
@@ -52,7 +52,7 @@ int		ft_key1(int key, t_all *all)
 int		ft_key2(int key, t_all *all)
 {
 	if (key == 35 || key == 49) // set or reset parallel projection
-	{
+	{ // press 'p' or <space>
 		all->win.proj = 'p';
 		all->win.ex = all->win.width / (all->map.width + all->map.height) / 2;
 		all->win.ey = all->win.width / (all->map.width + all->map.height) / 2;
