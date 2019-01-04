@@ -6,7 +6,7 @@
 /*   By: shcohen <shcohen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/21 19:10:38 by shcohen           #+#    #+#             */
-/*   Updated: 2019/01/04 00:09:03 by shcohen          ###   ########.fr       */
+/*   Updated: 2019/01/04 22:03:33 by shcohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,13 @@ int		main(int argc, char **argv)
 			return (0);
 		}
 		ft_create_window(all);
+		ft_init_keycode(all);
+		ft_init_fractal(all);
+		ft_choose_fractal(all);
+		mlx_put_image_to_window(all->mlx.mlx_ptr, all->mlx.win_ptr,
+			all->mlx.img_ptr, 0, 0);
 		ft_array(all);
-		// mlx_hook(all->mlx.mlx_ptr, 2, (1L << 0), &ft_key, all);
-		// mlx_hook(all->mlx.win_ptr, 17, 0, ft_exit, 0);
+		mlx_hook(all->mlx.win_ptr, 17, 0, ft_exit, 0);
 		mlx_loop(all->mlx.mlx_ptr);
 	}
 	return (0);

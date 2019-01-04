@@ -6,7 +6,7 @@
 #    By: shcohen <shcohen@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/21 19:08:11 by shcohen           #+#    #+#              #
-#    Updated: 2019/01/03 22:45:03 by shcohen          ###   ########.fr        #
+#    Updated: 2019/01/04 19:56:36 by shcohen          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,9 +17,13 @@ INC = includes
 
 SRC_DIR = sources
 
-SRC = draw.c \
+SRC = burning_ship.c \
+	draw.c \
 	events.c \
+	fractals.c \
+	julia.c \
 	main.c \
+	mandelbrot.c \
 	window.c
 
 SRC := $(addprefix $(SRC_DIR)/,$(SRC))
