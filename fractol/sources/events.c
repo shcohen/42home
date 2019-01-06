@@ -5,21 +5,72 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: shcohen <shcohen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/21 19:15:20 by shcohen           #+#    #+#             */
-/*   Updated: 2019/01/04 22:13:00 by shcohen          ###   ########.fr       */
+/*   Created: 2019/01/05 21:02:04 by shcohen           #+#    #+#             */
+/*   Updated: 2019/01/06 14:19:08 by shcohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
+int		ft_keycode2(int key, t_all *all)
+{
+	if (key == ONE)
+		all->key.color_r += 5;
+	if (key == TWO)
+		all->key.color_g += 5;
+	if (key == THREE)
+		all->key.color_b += 5;
+	if (key == FOUR)
+		all->key.color_r -= 5;
+	if (key == FIVE)
+		all->key.color_g -= 5;
+	if (key == SIX)
+		all->key.color_b -= 5;
+	if (key == M)
+		all->key.mouse = 1;
+	if (key == X)
+		all->key.mouse = 0;
+	if (key == POINT)
+		all->key.click = 1;
+	if (key == COMA)
+		all->key.click = 0;
+	ft_redraw(all);
+	return (0);
+}
+
+int		ft_keycode(int key, t_all *all)
+{
+	if (key == 53)
+		exit(0);
+	if (key == W)
+		all->fra.my += 0.1;
+	if (key == S)
+		all->fra.my -= 0.1;
+	if (key == A)
+		all->fra.mx += 0.1;
+	if (key == D)
+		all->fra.mx -= 0.1;
+	if (key == PLUS)
+		all->fra.max_iter += 5;
+	if (key == MINUS)
+		all->fra.max_iter -= 5;
+	if (key == 15)
+	{
+		ft_init_keycode(all);
+		ft_init_fractal(all);
+	}
+	ft_keycode2(key, all);
+	return (0);
+}
+
 int		ft_motion_hook(int x, int y, t_all *all)
 {
-	if (x < all->mlx.x_size && y < all->mlx.y_size && all->key.mouse == 1)
+	if (x < all->mlx.width && y < all->mlx.height && all->key.mouse == 1)
 	{
-		all->fra.c_r = (x < all->mlx.x_size / 2) ? (all->fra.c_r + 0.01) :
-		(all->fra.c_r - 0.01);
-		all->fra.c_i = (y < all->mlx.y_size / 2) ? (all->fra.c_i + 0.01) :
-		(all->fra.c_i - 0.01);
+		all->fra.c_r = (x < all->mlx.width / 2) ? (all->fra.c_r + 0.01) :
+			(all->fra.c_r - 0.01);
+		all->fra.c_i = (y < all->mlx.height / 2) ? (all->fra.c_i + 0.01) :
+			(all->fra.c_i - 0.01);
 		ft_redraw(all);
 	}
 	return (0);
@@ -30,63 +81,19 @@ int		ft_mousehook(int button, int x, int y, t_all *all)
 	if ((button == LEFT_CLICK && all->key.click == 1) || button == MOUSE_UP)
 	{
 		all->key.zoom *= 1.1;
-		all->fra.x1 = all->fra.x1 + ((double)x - ((double)all->mlx.x_size / 2))
+		all->fra.x1 = all->fra.x1 + ((double)x - ((double)all->mlx.width / 2))
 			/ all->key.zoom;
-		all->fra.y1 = all->fra.y1 + ((double)y - ((double)all->mlx.y_size / 2))
+		all->fra.y1 = all->fra.y1 + ((double)y - ((double)all->mlx.height / 2))
 			/ all->key.zoom;
 	}
 	if ((button == RIGHT_CLICK && all->key.click == 1) || button == MOUSE_DOWN)
 	{
-		all->key.zoom *= 1.1;
-		all->fra.x1 = all->fra.x1 + ((double)x - ((double)all->mlx.x_size / 2))
+		all->key.zoom *= 0.8;
+		all->fra.x1 = all->fra.x1 + ((double)x - ((double)all->mlx.width / 2))
 			/ all->key.zoom;
-		all->fra.y1 = all->fra.y1 + ((double)y - ((double)all->mlx.y_size / 2))
+		all->fra.y1 = all->fra.y1 + ((double)y - ((double)all->mlx.height / 2))
 			/ all->key.zoom;
 	}
 	ft_redraw(all);
-	return (0);
-}
-
-void	ft_init_keycode(t_all *all)
-{
-	all->fra.mx = 0;
-	all->fra.my = 0;
-	all->key.zoom = 200;
-	all->key.color_bonus = 0;
-	all->key.px = 0;
-	all->key.py = 0;
-}
-
-void	ft_keycode(int key, t_all *all)
-{
-	if (key == 67)
-		all->fra.max_iter += 0.2;
-	else if (key == 75)
-		all->fra.max_iter -= 0.2;
-	else if (key == 126)
-		all->fra.mx -= 0.1;
-	else if (key == 125)
-		all->fra.mx += 0.1;
-	else if (key == 123)
-		all->fra.my -= 0.1;
-	else if (key == 124)
-		all->fra.my += 0.1;
-	ft_redraw(all);
-}
-
-int		ft_key(int key, t_all *all)
-{
-	if (key == 53)
-		exit(0);
-	if (key == 15)
-	{
-		ft_init_keycode(all);
-		ft_init_fractal(all);
-	}
-	ft_keycode(key, all);
-	ft_bzero(all->mlx.img_str, all->mlx.x_size * all->mlx.y_size * sizeof(int));
-	mlx_put_image_to_window(all->mlx.mlx_ptr, all->mlx.win_ptr,
-	all->mlx.img_ptr, 0, 0);
-	ft_array(all);
 	return (0);
 }

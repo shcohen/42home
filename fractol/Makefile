@@ -6,7 +6,7 @@
 #    By: shcohen <shcohen@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/21 19:08:11 by shcohen           #+#    #+#              #
-#    Updated: 2019/01/04 19:56:36 by shcohen          ###   ########.fr        #
+#    Updated: 2019/01/05 21:20:19 by shcohen          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ INC = includes
 
 SRC_DIR = sources
 
-SRC = burning_ship.c \
+SRC = burningship.c \
 	draw.c \
 	events.c \
 	fractals.c \
