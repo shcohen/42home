@@ -6,7 +6,7 @@
 /*   By: shcohen <shcohen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/05 20:23:12 by shcohen           #+#    #+#             */
-/*   Updated: 2019/01/06 14:21:17 by shcohen          ###   ########.fr       */
+/*   Updated: 2019/01/06 14:31:30 by shcohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,7 @@ void	ft_init_keycode(t_all *all)
 
 int		ft_usage(void)
 {
-	ft_putendl("\
-			usage : ./fractol <fractal name>\
+	ft_putendl("usage : ./fractol <fractal name>\
 			\navailable : mandelbrot, julia, burningship.");
 	return (0);
 }
