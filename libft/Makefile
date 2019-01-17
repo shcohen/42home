@@ -3,14 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: shcohen <marvin@42.fr>                     +#+  +:+       +#+         #
+#    By: shcohen <shcohen@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/15 15:15:10 by shcohen           #+#    #+#              #
-<<<<<<< HEAD
-#    Updated: 2018/09/11 19:57:57 by shcohen          ###   ########.fr        #
-=======
-#    Updated: 2018/06/17 17:26:31 by shcohen          ###   ########.fr        #
->>>>>>> 210e901da71f918709e768c6518c4d226309c033
+#    Updated: 2019/01/04 17:19:52 by shcohen          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,25 +63,25 @@ SRC = ft_memset.c \
 	  ft_strtrim.c \
 	  ft_strjoin.c \
 	  ft_strsplit.c \
-<<<<<<< HEAD
 	  ft_strlcat.c \
 	  ft_lstnew.c \
 	  ft_lstdelone.c \
 	  ft_lstdel.c \
-	  ft_lstadd.c
-=======
-	  ft_strlcat.c
->>>>>>> 210e901da71f918709e768c6518c4d226309c033
+	  ft_lstadd.c \
+	  ft_lstiter.c \
+	  ft_lstmap.c \
+	  ft_gnl.c
 BIN = $(SRC:.c=.o)
 
 all : $(NAME)
 
 %.o: %.c
-	gcc $(FLAGS) -c $< -o $@
-
+	@gcc $(FLAGS) -c $< -o $@
+	@printf "\33[2K $$> %s\r" "gcc $(FLAGS) -c $< -o $@"
 $(NAME) : $(BIN)
 	@ar rc $(NAME) $(BIN)
 	@ranlib $(NAME)
+	@printf "\33[2K\r\e[96mLibft \e[90m[\e[32mOK\e[90m]\e[0m\n"
 clean :
 	@rm -f $(BIN)
 fclean : clean

@@ -6,21 +6,13 @@
 /*   By: shcohen <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/16 23:27:45 by shcohen           #+#    #+#             */
-<<<<<<< HEAD
 /*   Updated: 2018/06/19 17:47:39 by shcohen          ###   ########.fr       */
-=======
-/*   Updated: 2018/06/12 16:21:15 by shcohen          ###   ########.fr       */
->>>>>>> 210e901da71f918709e768c6518c4d226309c033
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-<<<<<<< HEAD
 size_t	ft_strlen(const char *str)
-=======
-int		ft_strlen(const char *str)
->>>>>>> 210e901da71f918709e768c6518c4d226309c033
 {
 	size_t	i;
 

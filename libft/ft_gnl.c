@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   ft_gnl.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shcohen <shcohen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 18:19:06 by shcohen           #+#    #+#             */
-/*   Updated: 2018/12/21 15:00:55 by shcohen          ###   ########.fr       */
+/*   Updated: 2019/01/04 17:19:12 by shcohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int		ft_fill_line(char **line, char **save, int i)
 	return (i);
 }
 
-int		get_next_line(const int fd, char **line)
+int		ft_gnl(const int fd, char **line)
 {
 	static char	*save = 0;
 	int			i;

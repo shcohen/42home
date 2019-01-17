@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: shcohen <marvin@42.fr>                     +#+  +:+       +#+         #
+#    By: shcohen <shcohen@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/15 15:15:10 by shcohen           #+#    #+#              #
-#    Updated: 2018/11/27 20:01:35 by shcohen          ###   ########.fr        #
+#    Updated: 2019/01/04 17:19:52 by shcohen          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,7 +70,7 @@ SRC = ft_memset.c \
 	  ft_lstadd.c \
 	  ft_lstiter.c \
 	  ft_lstmap.c \
-	  get_next_line.c
+	  ft_gnl.c
 BIN = $(SRC:.c=.o)
 
 all : $(NAME)
