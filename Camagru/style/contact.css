@@ -7,8 +7,8 @@ body {
     border-radius: 5px;
     background-color: #f2f2f2;
     padding: 165px 60px;
-    margin-top: 70px;
-    margin-left: 23%;
+    margin-top: 28px;
+    margin-left: 26%;
     width: 50%;
 }
 
@@ -70,5 +70,4 @@ input[type=button]:hover {
     padding: 20px;
     margin-top: 20%;
     margin-left: 31%;
-}
 }

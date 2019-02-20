@@ -8,10 +8,10 @@ body {
 .grid-container {
     display: grid;
     grid-template-areas:
-            "header"
-            "navbar"
-            "main"
-            "footer";
+        "header"
+        "navbar"
+        "main"
+        "footer";
     grid-template-rows: 0.15fr 0.10fr 3fr 0.15fr;
     height: 100vh;
 }
@@ -27,24 +27,24 @@ body {
     grid-area: navbar;
     background-color: #ba3d7a;
 }
-.navbar a {
-    float: left;
-    padding: 12px 10px;
-    color: white;
-    text-decoration: none;
-}
-.navbar a:hover {
-    background-color: #a7376d;
-}
-.active {
-    background-color: #862d58;
-}
-@media screen and (max-width: 500px) {
     .navbar a {
-        float: none;
-        display: block;
+        float: left;
+        padding: 12px 10px;
+        color: white;
+        text-decoration: none;
     }
-}
+    .navbar a:hover {
+        background-color: #a7376d;
+    }
+    .active {
+        background-color: #862d58;
+    }
+    @media screen and (max-width: 500px) {
+        .navbar a {
+            float: none;
+            display: block;
+        }
+    }
 /* END OF NAVIGATION BAR*/
 
 .main{
