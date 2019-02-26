@@ -11,8 +11,9 @@
 
 <body>
 <div class="grid-container" id="grid-container">
+
     <div class="header" id="header">
-        <!--        <h1 style="margin: 0;">CAMAGRU</h1>-->
+<!--                <h1 style="margin: 0;">CAMAGRU</h1>-->
     </div>
 
     <div class="navbar">
@@ -23,7 +24,13 @@
     </div>
 
     <div class="main"></div>
-    <div class="footer"></div>
+
+    <div class="footer"><h1>
+        <a href="https://www.facebook.com/jinsere.mon.nom" class="fa fa-facebook"></a>
+        <a href="https://www.twitter.com/alecsadier" class="fa fa-twitter"></a>
+        <a href="#" class="fa fa-linkedin"></a>
+    </h1></div>
+
 </div>
 </body>
 
