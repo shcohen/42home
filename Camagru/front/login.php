@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -17,9 +21,8 @@
     </div>
     <div class="navbar">
         <a class="active" href="../index.php"><i class="fa fa-fw fa-home"></i> HOME</a>
-        <a href="#"><i class="fa fa-fw fa-search"></i> SEARCH</a>
         <a href="contact.php"><i class="fa fa-fw fa-envelope"></i> CONTACT</a>
-        <a href="login.php"><i class="fa fa-fw fa-user"></i> LOGIN</a>
+        <a href="login.php"><i class="fa fa-fw fa-user"></i><?php if (!empty($_SESSION['username'])) { echo htmlspecialchars($_SESSION['username']); } else {?> LOGIN<?php }?></a>
     </div>
 
     <div class="main">
@@ -32,9 +35,9 @@
                     <img src="../assets/img_avatar.jpg" alt="Avatar" class="avatar">
                 </div>
                     <br><br>
-                <form action="#" method="POST">
+                <form action="../back/user.php" method="POST">
 
-                    <div style="background-color: green">
+                    <div class="yo1" style="background-color: green">
                         <b>Username</b>
                         <input type="text" placeholder="Enter Username" name="uname" required>
                             <br><br>
@@ -56,9 +59,8 @@
                     });
                 </script>
             </div>
-
                 <br><label><input type="checkbox" checked="checked" name="remember"> Remember me</label>
-                <br><br><hr>
+                <br><br><br><hr>
                 <p><a href="#" style="color:dodgerblue">Forgot your password ?</a></p>
                 <button type="submit">Sign In</button>
                 </form>
@@ -72,9 +74,9 @@
                     <img src="../assets/img_avatar2.jpg" alt="Avatar" class="avatar">
                 </div>
                     <br><br>
-                <form action="#" method="POST">
+                <form action="../back/user.php " method="POST">
 
-                <div style="background-color: green">
+                <div class="yo2" style="background-color: green">
                     <b>Email</b>
                     <input type="text" placeholder="Enter Email" name="email" required>
                         <br><br>

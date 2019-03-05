@@ -3,6 +3,8 @@
     grid-template-columns: repeat(3, 1fr);
     grid-auto-rows: 100px;
     background-color: purple;
+    justify-content: center;
+    align-content: center;
 }
     .box1 {
         position: relative;
@@ -11,6 +13,7 @@
         grid-row-start: 2;
         grid-row-end: 8;
         text-align: center;
+        border: 1px solid black
     }
     .box2 {
         position: relative;
@@ -19,6 +22,7 @@
         grid-row-start: 2;
         grid-row-end: 8;
         text-align: center;
+        border: 1px solid black
     }
 
 hr {
@@ -29,4 +33,8 @@ hr {
 img.avatar {
     width: 20%;
     border-radius: 50%;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
 }
