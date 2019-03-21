@@ -22,6 +22,6 @@ try {
     } catch (PDOException $e) {
         throw $e;
     }
-} catch (PDOException $e){
+} catch (PDOException $e) {
     throw $e;
 }

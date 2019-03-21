@@ -1,13 +1,8 @@
 .main {
-    margin: 40px;
-    background-image: url("https://buidln.clipdealer.com/000/122/811/previews/8--122811-Animation%20of%20swirl%20flowers%20flying%20on%20white%20background%2C%20alpha%20channel%20included.jpg");
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+    /*margin: 40px;*/
     background-size: cover;
-    background-color: #f1f1f1;
+    background: url("https://buidln.clipdealer.com/000/122/811/previews/8--122811-Animation%20of%20swirl%20flowers%20flying%20on%20white%20background%2C%20alpha%20channel%20included.jpg") no-repeat fixed center center;
 }
-
 /*START OF WRAPPER*/
 .wrapper {
     box-sizing: border-box;
@@ -90,6 +85,9 @@
 
     .box2 {
         margin-left: 8%;
+    }
+    .sub {
+        margin-left: 35%;
     }
 }
 /*END OF WRAPPER*/

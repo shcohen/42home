@@ -22,7 +22,6 @@ session_start();
 
     <div class="navbar">
         <a class="active" href="index.php"><i class="fa fa-fw fa-home"></i> HOME</a>
-        <a href="#"><i class="fa fa-fw fa-search"></i> SEARCH</a>
         <a href="front/contact.php"><i class="fa fa-fw fa-envelope"></i> CONTACT</a>
         <a href="front/login.php"><i class="fa fa-fw fa-user"></i><?php if (!empty($_SESSION['username'])) { echo htmlspecialchars($_SESSION['username']); } else {?> LOGIN<?php }?></a>
     </div>
@@ -31,7 +30,7 @@ session_start();
 
     <div class="footer"><h1>
             <a href="https://www.facebook.com/jinsere.mon.nom" class="fa fa-facebook"></a>
-            <a href="#" class="fa fa-linkedin"></a>
+            <a href="https://fr.linkedin.com/in/linkedin" class="fa fa-linkedin"></a>
             <a href="https://www.twitter.com/alecsadier" class="fa fa-twitter"></a>
         </h1></div>
 
