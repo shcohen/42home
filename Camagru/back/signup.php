@@ -51,3 +51,8 @@ if (isset($_POST['signup-submit'])) {
         }
     }
 }
+
+else {
+    header("Location: ../front/login.php");
+    exit();
+}

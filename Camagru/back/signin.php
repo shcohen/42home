@@ -33,18 +33,37 @@ if (isset($_POST['signin-submit'])) {
         } catch (PDOException $e) {
             throw $e;
         }
+        // Error : User does not exist.
         if (!empty($name)) {
             echo "Error : Username is not valid.";
         } else {
             try {
                 $stmt = $DB->prepare("SELECT `Password` FROM `users` WHERE Password=?");
                 $stmt->execute([$uname, $email, password_hash($pwd, PASSWORD_BCRYPT)]);
-                // password_verify
-                header('Location: ../account.php');
+                // $pwdCheck = password_verify($pwd, $row['Password]);
+                // if ($pwdCheck == false) {
+                //  header(Location: "../front/login.php?error=wrongpwd");
+                // exit();
+                // } else if ($pwdCheck == true) {
+                //  session_start();
+                // $_SESSION[userID] = $row['ID'];
+                // $_SESSION[useruname] = $row['Username'];
+                // header("Location: ../front/login.php?login=sucess");
+                //  exit();
+                // } else {
+                //  header("Location: ../front/login.php?error=wrongpwd");
+                //  exit();
+                // }
+                header("Location: ../account.php");
                 exit();
             } catch (PDOException $e) {
                 throw $e;
             }
         }
     }
+}
+
+else {
+    header("Location: ../front/login.php");
+    exit();
 }
