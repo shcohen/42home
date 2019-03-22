@@ -11,14 +11,13 @@ try {
 }
 
 try {
-    $DB = new PDO($DB_DSN . 'dbname=' . $DB_NAME, $DB_USR, $DB_PWD);
+    $DB = new PDO($DB_DSNAME, $DB_USR, $DB_PWD);
     $stmt = $DB->query($DB_USER_INFO_CONTENT);
     $stmt->execute();
     try {
         $stmt = $DB->query("SHOW TABLES");
         $stmt->execute();
         $name = $stmt->fetch();
-        print_r($name);
     } catch (PDOException $e) {
         throw $e;
     }
