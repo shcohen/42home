@@ -1,6 +1,6 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
-    /*background-color: yellow;*/
+    background-color: yellow;
     margin: 0;
     padding: 0;
 }
@@ -37,6 +37,9 @@ body {
     .navbar a:hover {
         background-color: #a7376d;
     }
+    .navbar a.active:hover {
+        background-color: #862d58 !important;
+    }
     .active {
         background-color: #862d58;
     }
@@ -50,7 +53,6 @@ body {
 
 .main{
     grid-area: main;
-    background-color: hotpink;
 }
 
 /* START OF FOOTER STUFF*/

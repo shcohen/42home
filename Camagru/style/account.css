@@ -8,17 +8,13 @@
     background: url("https://buidln.clipdealer.com/000/122/811/previews/8--122811-Animation%20of%20swirl%20flowers%20flying%20on%20white%20background%2C%20alpha%20channel%20included.jpg") no-repeat fixed center center;
 }
 
-/*html {*/
-    /*overflow-y: scroll;*/
-/*}*/
-
 li a {
     text-decoration: none;
-    color: #ff9966;
+    color: #75d119;
     transition: .5s ease;
 }
 li a:hover {
-    color: #ff8c66;
+    color: #66cc00;
 }
 
 .form {
@@ -35,32 +31,18 @@ li a:hover {
     padding: 0;
     margin: 0 0 40px 0;
 }
-.tab-group:after {
-    content: "";
-    display: table;
-    clear: both;
-}
-.tab-group li a {
-    display: block;
-    text-decoration: none;
-    padding: 15px;
-    background: #e0dedc;
-    color: #000000;
-    font-size: 20px;
-    float: left;
-    width: 50%;
-    text-align: center;
-    cursor: pointer;
-    transition: .5s ease;
-}
-.tab-group li a:hover {
-    background: #ff8c66;
-    color: #000000;
-}
-.tab-group .active a {
-    background: #ff9966;
-    color: #000000;
-}
+    .tab-group li a {
+        display: block;
+        text-decoration: none;
+        padding: 15px;
+        background: #e0dedc;
+        color: #000000;
+        font-size: 20px;
+        float: left;
+        width: 100%;
+        text-align: center;
+        transition: .5s ease;
+    }
 
 h1 {
     text-align: center;
@@ -84,7 +66,7 @@ input, textarea {
 }
 input:focus, textarea:focus {
     outline: 0;
-    border-color: #ff9966;
+    border-color: #75d119;
 }
 textarea {
     border: 2px solid #d9d7d5;
@@ -106,18 +88,18 @@ textarea {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: .1em;
-    background: #ff9966;
+    background: #75d119;
     color: #000000;
     transition: all 0.5s ease;
     -webkit-appearance: none;
 }
-    .button:hover, .button:focus {
-        background: #ff8c66;
-    }
-    .button-block {
-        display: block;
-        width: 100%;
-    }
+.button:hover, .button:focus {
+    background: #66cc00;
+}
+.button-block {
+    display: block;
+    width: 100%;
+}
 
 .forgot {
     margin-top: -20px;

@@ -12,7 +12,7 @@ session_start();
     <link rel="stylesheet" href="../style/index.css" type="text/css" media="screen">
     <link rel="stylesheet" href="../style/login.css" type="text/css" media="screen">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script async src="../log.js"></script>
+    <script async src="../js/login.js"></script>
 </head>
 
 <body>
@@ -21,9 +21,9 @@ session_start();
                 <h1 style="margin: 0;">CAMAGRU</h1>
     </div>
     <div class="navbar">
-        <a class="active" href="../index.php"><i class="fa fa-fw fa-home"></i> HOME</a>
+        <a href="../index.php"><i class="fa fa-fw fa-home"></i> HOME</a>
         <a href="contact.php"><i class="fa fa-fw fa-envelope"></i> CONTACT</a>
-        <a href="login.php"><i class="fa fa-fw fa-user"></i><?php if (!empty($_SESSION['username'])) { echo htmlspecialchars($_SESSION['username']); } else {?> LOGIN<?php }?></a>
+        <a class="active" href="login.php"><i class="fa fa-fw fa-user"></i><?php if (!empty($_SESSION['username'])) { echo htmlspecialchars($_SESSION['username']); } else {?> LOGIN<?php }?></a>
     </div>
 
     <div class="main">
@@ -79,16 +79,27 @@ session_start();
                             <input id="input" class="req" type="password" placeholder="Repeat Password" name="rpwd" required>
                         </div>
                             <p id="text" style="display: none; color: red;">WARNING : CAPS LOCK IS ON.</p>
-                        <p class="forgot"><a href="#" style="color: #777777;">Forgot Password?</a></p>
+                        <script>
+                            var input = document.getElementById("input");
+                            var text = document.getElementById("text");
+                            input.addEventListener("keyup", function(event) {
+                                if (event.getModifierState("CapsLock")) {
+                                    text.style.display = "block"; }
+                                else {
+                                    text.style.display = "none" }
+                            });
+                        </script>
+                        <p class="forgot"><a href="forgot.php" style="color: #777777;">Forgot Password?</a></p>
                         <button type="submit" class="button button-block" name="signin-submit">Let's Go</button>
                     </form>
                 </div>
 
-            </div><!-- tab-content -->
+            </div> <!-- tab-content -->
 
         </div> <!-- /form -->
 
     </div>
+
     <div class="footer">
         <h1>
             <a href="https://www.facebook.com/jinsere.mon.nom" class="fa fa-facebook"></a>
@@ -96,6 +107,7 @@ session_start();
             <a href="https://www.twitter.com/alecsadier" class="fa fa-twitter"></a>
         </h1>
     </div>
+
 </div>
 </body>
 

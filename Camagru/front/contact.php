@@ -20,8 +20,8 @@ session_start();
         <!--                <h1 style="margin: 0;">CAMAGRU</h1>-->
     </div>
     <div class="navbar">
-        <a class="active" href="../index.php"><i class="fa fa-fw fa-home"></i> HOME</a>
-        <a href="contact.php"><i class="fa fa-fw fa-envelope"></i> CONTACT</a>
+        <a href="../index.php"><i class="fa fa-fw fa-home"></i> HOME</a>
+        <a class="active" href="contact.php"><i class="fa fa-fw fa-envelope"></i> CONTACT</a>
         <a href="login.php"><i class="fa fa-fw fa-user"></i><?php if (!empty($_SESSION['username'])) { echo htmlspecialchars($_SESSION['username']); } else {?> LOGIN<?php }?></a>
     </div>
 

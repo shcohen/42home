@@ -31,13 +31,14 @@ if (isset($_POST['signup-submit'])) {
                 $stmt->execute([$email]);
                 $name = $stmt->fetch();
                 if (!empty($name)) {
-                    echo "Error : Email already exists.";
+                    header("Location: ../front/login.php?error=emailtaken&uname=".$uname."");
+                    exit();
                 }
                 else {
                     try {
                         $stmt = $DB->prepare("INSERT INTO `users` (Username, Email, Password) VALUES (?, ?, ?)");
                         $stmt->execute([$uname, $email, password_hash($pwd, PASSWORD_BCRYPT)]);
-                        header('Location: ../account.php');
+                        header('Location: ../front/account.php?login=success');
                         exit();
                     } catch (PDOException $e) {
                         throw $e;

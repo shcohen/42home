@@ -1,5 +1,13 @@
 <?php
 session_start();
+//if (isset($_SESSION['userID'])){
+//    $id = $_SESSION['userID'];
+//    // TODO: Verifier dans la DB si 'userID' existe
+//
+//} else {
+//    header("Location: /front/login.php?error=accessdenied");
+//    exit;
+//}
 ?>
 
 <!DOCTYPE html>
@@ -10,6 +18,7 @@ session_start();
     <meta charset="UTF-8">
     <link rel="icon" href="../assets/icon.png">
     <link rel="stylesheet" href="../style/index.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="../style/account.css" type="text/css" media="screen">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
@@ -21,12 +30,54 @@ session_start();
     </div>
 
     <div class="navbar">
-        <a class="active" href="../index.php"><i class="fa fa-fw fa-home"></i> HOME</a>
+        <a href="../index.php"><i class="fa fa-fw fa-home"></i> HOME</a>
         <a href="contact.php"><i class="fa fa-fw fa-envelope"></i> CONTACT</a>
-        <a href="account.php"><i class="fa fa-fw fa-user"></i><?php if (!empty($_SESSION['username'])) { echo htmlspecialchars($_SESSION['username']); } else {?> LOGIN<?php }?></a>
+        <a class="active" href="account.php"><i class="fa fa-fw fa-user"></i><?php if (!empty($_SESSION['username'])) { echo htmlspecialchars($_SESSION['username']); } else {?> LOGIN<?php }?></a>
     </div>
 
-    <div class="main"></div>
+    <div class="main">
+
+        <div class="form">
+
+            <ul class="tab-group">
+                <li><a>Modify Account Informations</a></li>
+            </ul>
+
+            <br><br><br>
+
+            <div class="tab-content">
+                <div id="modify">
+                    <h1>Hello <?php if (!empty($_SESSION['username'])) { echo htmlspecialchars($_SESSION['username']); }?>!</h1>
+                    <form action="../back/modify.php" method="post">
+                        <div class="field-wrap">
+                            <input type="text" class="req" placeholder="Enter New Email" name="email" required>
+                        </div>
+                        <div class="field-wrap">
+                            <input type="text" class="req" placeholder="Enter New Username" name="uname" required>
+                        </div>
+                        <div class="field-wrap">
+                            <input id="myInput" class="req" type="password" placeholder="Enter New Password" name="pwd" required>
+                            <p id="text" style="display: none; color: red;">WARNING : CAPS LOCK IS ON.</p>
+                            <script>
+                                var input = document.getElementById("myInput");
+                                var text = document.getElementById("text");
+                                input.addEventListener("keyup", function(event) {
+                                    if (event.getModifierState("CapsLock")) {
+                                        text.style.display = "block"; }
+                                    else {
+                                        text.style.display = "none" }
+                                });
+                            </script>
+                        </div>
+                        <button type="submit" class="button button-block" name="signup-submit">Save Changes</button>
+                    </form>
+                </div>
+
+            </div><!-- tab-content -->
+
+        </div> <!-- /form -->
+
+    </div>
 
     <div class="footer">
         <h1>
