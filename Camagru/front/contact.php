@@ -23,6 +23,11 @@ session_start();
         <a href="../index.php"><i class="fa fa-fw fa-home"></i> HOME</a>
         <a class="active" href="contact.php"><i class="fa fa-fw fa-envelope"></i> CONTACT</a>
         <a href="login.php"><i class="fa fa-fw fa-user"></i><?php if (!empty($_SESSION['username'])) { echo htmlspecialchars($_SESSION['username']); } else {?> LOGIN<?php }?></a>
+        <?php
+        if (isset($_SESSION['username'])) {
+            echo '<a style="float: right;" href="../back/logout.php">LOGOUT</a>';
+        }
+        ?>
     </div>
 
     <div class="main">
@@ -37,7 +42,7 @@ session_start();
             </div>
 
         <div class="box2">
-            <form action="#">
+            <form action="../back/contactform.php" method="post">
                 <div class="row">
                     <div class="col-25">
                         <label for="uname"><b>Username</b></label>
@@ -73,7 +78,7 @@ session_start();
                     </div>
                 </div>
                 <div class="row">
-                    <button class="sub" type="submit">Submit</button>
+                    <button class="sub" type="submit" name="submit">Send Mail</button>
                 </div>
             </form>
         </div>

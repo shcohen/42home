@@ -25,9 +25,24 @@ session_start();
         <a class="active" href="index.php"><i class="fa fa-fw fa-home"></i> HOME</a>
         <a href="front/contact.php"><i class="fa fa-fw fa-envelope"></i> CONTACT</a>
         <a href="front/login.php"><i class="fa fa-fw fa-user"></i><?php if (!empty($_SESSION['username'])) { echo htmlspecialchars($_SESSION['username']); } else {?> LOGIN<?php }?></a>
+        <?php
+            if (isset($_SESSION['username'])) {
+                echo '<a style="float: right;" href="back/logout.php">LOGOUT</a>';
+            }
+        ?>
     </div>
 
-    <div class="main"></div>
+    <div class="main">
+        <div class="form">
+            <h1>POST</h1>
+        </div>
+
+        <br><br><br><br><br>
+
+        <div class="form">
+            <h1>POST</h1>
+        </div>
+    </div>
 
     <div class="footer"><h1>
             <a href="https://www.facebook.com/jinsere.mon.nom" class="fa fa-facebook"></a>

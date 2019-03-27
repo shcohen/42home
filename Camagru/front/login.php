@@ -24,6 +24,11 @@ session_start();
         <a href="../index.php"><i class="fa fa-fw fa-home"></i> HOME</a>
         <a href="contact.php"><i class="fa fa-fw fa-envelope"></i> CONTACT</a>
         <a class="active" href="login.php"><i class="fa fa-fw fa-user"></i><?php if (!empty($_SESSION['username'])) { echo htmlspecialchars($_SESSION['username']); } else {?> LOGIN<?php }?></a>
+        <?php
+            if (isset($_SESSION['username'])) {
+                echo '<a style="float: right;" href="../back/logout.php">LOGOUT</a>';
+            }
+        ?>
     </div>
 
     <div class="main">
@@ -38,12 +43,12 @@ session_start();
             <div class="tab-content">
                 <div id="signup" class="visi">
                     <h1>Nice to meet you!</h1>
-                    <form action="../back/signup.php" method="post">
+                    <form action="../back/user_info.php" method="post">
                         <div class="field-wrap">
                             <input type="text" class="req" placeholder="Enter Email" name="email" required>
                         </div>
                         <div class="field-wrap">
-                            <input type="text" class="req" placeholder="Enter Username" name="uname" required>
+                            <input type="text" class="req" placeholder="Enter Username" name="username" required>
                         </div>
                         <div class="field-wrap">
                             <input id="myInput" class="req" type="password" placeholder="Enter Password" name="pwd" required>
@@ -59,46 +64,53 @@ session_start();
                                 });
                             </script>
                         </div>
+                        <div class="field-wrap">
+                            <input id="inputo" class="req" type="password" placeholder="Repeat Password" name="rpwd" required>
+                            <p id="texto" style="display: none; color: red;">WARNING : CAPS LOCK IS ON.</p>
+                            <script>
+                                var input = document.getElementById("inputo");
+                                var text = document.getElementById("texto");
+                                input.addEventListener("keyup", function(event) {
+                                    if (event.getModifierState("CapsLock")) {
+                                        text.style.display = "block"; }
+                                    else {
+                                        text.style.display = "none" }
+                                });
+                            </script>
+                        </div>
                         <p class="forgot">By creating an account you agree to our <a href="terms.php" style="color: #777777;">Terms & Privacy.</a></p>
                         <button type="submit" class="button button-block" name="signup-submit">Get Started</button>
                     </form>
                 </div>
 
                 <div id="signin" class="none">
-                    <h1>Welcome Back!</h1>
-                    <form action="../back/signin.php" method="post">
+                    <h1>Glad to see you again!</h1>
+                    <form action="../back/user_info.php" method="post">
                         <div class="field-wrap">
                             <input type="text" placeholder="Enter Username" name="uname" required>
                         </div>
-
                         <div class="field-wrap">
-                            <input id="input" class="req" type="password" placeholder="Enter Password" name="pwd" required>
+                            <input id="myInputi" class="req" type="password" placeholder="Enter Password" name="pwd" required>
+                            <p id="texti" style="display: none; color: red;">WARNING : CAPS LOCK IS ON.</p>
+                            <script>
+                                var input = document.getElementById("myInputi");
+                                var text = document.getElementById("texti");
+                                input.addEventListener("keyup", function(event) {
+                                    if (event.getModifierState("CapsLock")) {
+                                        text.style.display = "block"; }
+                                    else {
+                                        text.style.display = "none" }
+                                });
+                            </script>
                         </div>
-
-                        <div class="field-wrap">
-                            <input id="input" class="req" type="password" placeholder="Repeat Password" name="rpwd" required>
-                        </div>
-                            <p id="text" style="display: none; color: red;">WARNING : CAPS LOCK IS ON.</p>
-                        <script>
-                            var input = document.getElementById("input");
-                            var text = document.getElementById("text");
-                            input.addEventListener("keyup", function(event) {
-                                if (event.getModifierState("CapsLock")) {
-                                    text.style.display = "block"; }
-                                else {
-                                    text.style.display = "none" }
-                            });
-                        </script>
-                        <p class="forgot"><a href="forgot.php" style="color: #777777;">Forgot Password?</a></p>
+                        <p class="forgot"><a href="forgotpwd.php" style="color: #777777;">Forgot Password?</a></p>
                         <button type="submit" class="button button-block" name="signin-submit">Let's Go</button>
                     </form>
                 </div>
 
             </div> <!-- tab-content -->
-
         </div> <!-- /form -->
-
-    </div>
+    </div> <!-- main -->
 
     <div class="footer">
         <h1>

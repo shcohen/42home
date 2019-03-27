@@ -1,5 +1,13 @@
 <?php
 session_start();
+//if (isset($_SESSION['userID'])){
+//    $id = $_SESSION['userID'];
+//    // TODO: Verifier dans la DB si 'userID' existe
+//
+//} else {
+//    header("Location: /front/login.php?error=accessdenied");
+//    exit;
+//}
 ?>
 
 <!DOCTYPE html>
@@ -18,19 +26,18 @@ session_start();
 <div class="grid-container" id="grid-container">
 
     <div class="header" id="header">
-                        <h1 style="margin: 0;">CAMAGRU</h1>
+        <h1 style="margin: 11px;">CAMAGRU</h1>
     </div>
 
     <div class="navbar">
-        <a class="active" href="../index.php"><i class="fa fa-fw fa-home"></i> HOME</a>
-        <a href="#"><i class="fa fa-fw fa-search"></i> SEARCH</a>
+        <a href="../index.php"><i class="fa fa-fw fa-home"></i> HOME</a>
         <a href="contact.php"><i class="fa fa-fw fa-envelope"></i> CONTACT</a>
-        <a href="login.php"><i class="fa fa-fw fa-user"></i><?php if (!empty($_SESSION['username'])) { echo htmlspecialchars($_SESSION['username']); } else {?> LOGIN<?php }?></a>
+        <a class="active" href="login.php"><i class="fa fa-fw fa-user"></i> LOGIN</a>
     </div>
 
     <div class="main">
         <div class="boxy">
-            <h1 style="font-size:3vw;">PRIVACY & TERMS -- CAMAGRU</h1>
+            <h1 style="font-size:3vw;">TERMS & PRIVACY IN CAMAGRU</h1>
             <h2 style="font-size: 2vw"><i>About Privacy</i></h2>
             <p style="font-size:1vw;"><b>1. Information Collection</b></p>
                 <p style="font-size:1vw;">Personally Identifiable Information is information that can be used to contact you or determine your specific identity. When other information is linked to this information, it also becomes Personally Identifiable Information.</p>
