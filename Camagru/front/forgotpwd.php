@@ -26,7 +26,7 @@ session_start();
 <div class="grid-container" id="grid-container">
 
     <div class="header" id="header">
-        <!--                <h1 style="margin: 0;">CAMAGRU</h1>-->
+        <h1 style="margin: 0;">CAMAGRU</h1>
     </div>
 
     <div class="navbar">
@@ -48,7 +48,7 @@ session_start();
                     <h1>You will receive an email allowing you to reset your password.</h1>
                     <form action="../back/modify.php" method="post">
                         <div class="field-wrap">
-                            <input type="text" class="req" placeholder="Enter Email or Username" name="email" required>
+                            <input type="text" class="req" placeholder="Enter Email or Username" name="reco_email" required>
                         </div>
                         <button type="submit" class="button button-block" name="signup-submit">Send Mail</button>
                     </form>

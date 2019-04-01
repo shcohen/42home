@@ -26,7 +26,7 @@ session_start();
 <div class="grid-container" id="grid-container">
 
     <div class="header" id="header">
-        <!--                <h1 style="margin: 0;">CAMAGRU</h1>-->
+                        <h1 style="margin: 0;">CAMAGRU</h1>
     </div>
 
     <div class="navbar">

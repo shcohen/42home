@@ -10,7 +10,11 @@ if (isset($_POST['submit'])){
     $headers = "From: ".$from;
     $subject = $username." from ".$country." has a message for you!";
 
+    if (mail($mailTo, $subject, $msg, $headers)){
+        echo "yes";
+    } else {
+        echo "no";
+    }
 
-    mail($mailTo, $subject, $msg, $headers);
-    header("Location: ../front/contact.php?success=emailsend");
+//    header("Location: ../front/contact.php?success=email_send");
 }

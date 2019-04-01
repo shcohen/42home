@@ -36,8 +36,7 @@ session_start();
         <?php
         if (isset($_SESSION['username'])) {
             echo '<a style="float: right;" href="../back/logout.php">LOGOUT</a>';
-        }
-        ?>
+        } ?>
     </div>
 
     <div class="main">
@@ -55,13 +54,13 @@ session_start();
                     <h1>Welcome Back <?php if (!empty($_SESSION['username'])) { echo htmlspecialchars($_SESSION['username']); }?>!</h1>
                     <form action="../back/modify.php" method="post">
                         <div class="field-wrap">
-                            <input type="text" class="req" placeholder="Enter New Email" name="email" required>
+                            <input type="text" class="req" placeholder="Enter New Email" name="new_email" required>
                         </div>
                         <div class="field-wrap">
-                            <input type="text" class="req" placeholder="Enter New Username" name="uname" required>
+                            <input type="text" class="req" placeholder="Enter New Username" name="new_uname" required>
                         </div>
                         <div class="field-wrap">
-                            <input id="myInput" class="req" type="password" placeholder="Enter New Password" name="pwd" required>
+                            <input id="myInput" class="req" type="password" placeholder="Enter New Password" name="new_pwd" required>
                             <p id="text" style="display: none; color: red;">WARNING : CAPS LOCK IS ON.</p>
                             <script>
                                 var input = document.getElementById("myInput");
