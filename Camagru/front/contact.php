@@ -17,7 +17,7 @@ session_start();
 <body>
 <div class="grid-container" id="grid-container">
     <div class="header" id="header">
-        <!--                <h1 style="margin: 0;">CAMAGRU</h1>-->
+                        <h1>CAMAGRU</h1>
     </div>
     <div class="navbar">
         <a href="../index.php"><i class="fa fa-fw fa-home"></i> HOME</a>
@@ -48,7 +48,7 @@ session_start();
                         <label for="uname"><b>Username</b></label>
                     </div>
                     <div class="col-75">
-                        <input type="text" id="uname" name="username" placeholder="Enter Username" required>
+                        <input type="text" id="uname" name="uname" placeholder="Enter Username" required>
                     </div>
                 </div>
                 <div class="row">
@@ -58,14 +58,15 @@ session_start();
                     </div>
                     <div class="col-75">
                         <select id="country" name="country">
-                            <option value="france">France</option>-->
-                            <option value="canada">Canada</option>
-                            <option value="hyrule">Hyrule</option>
-                            <option value="narnia">Narnia</option>
-                            <option value="middle">Middle Earth</option>
-                            <option value="westeros">Westeros</option>
-                            <option value="vulcan">Vulcan</option>
-                            <option value="naboo">Naboo</option>
+                            <option value="France">France</option>-->
+                            <option value="Canada">Canada</option>
+                            <option value="Hyrule">Hyrule</option>
+                            <option value="Narnia">Narnia</option>
+                            <option value="Middle Earth">Middle Earth</option>
+                            <option value="Kaamelott">Kaamelott</option>
+                            <option value="Westeros">Westeros</option>
+                            <option value="Vulcan">Vulcan</option>
+                            <option value="Naboo">Naboo</option>
                         </select>
                     </div>
                 </div>

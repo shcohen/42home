@@ -8,8 +8,8 @@
 
     $DB_USER_INFO_CONTENT = "CREATE TABLE user_info (
     ID int NOT NULL AUTO_INCREMENT PRIMARY KEY ,
-    acc_id int NOT NULL ,
+    acc_id varchar(32) NOT NULL ,
     username varchar(255) NOT NULL ,
     email varchar(255) NOT NULL ,
     password varchar(255) NOT NULL ,
-    validate int NOT NULL );";
+    validate boolean);";

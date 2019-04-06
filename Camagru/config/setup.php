@@ -9,6 +9,7 @@ try {
 } catch (PDOException $e) {
     throw $e;
 }
+
 try {
     $DB = new PDO($DB_DSNAME, $DB_USR, $DB_PWD);
     $stmt = $DB_USER_INFO_CONTENT;

@@ -9,13 +9,14 @@ if (!empty($_POST['uname']) && !empty($_POST['pwd'])){
     exit();
 }
 
-function    sign_in($username, $email, $pwd) {
+function    sign_in($username, $pwd) {
     require "../config/database.php";
     include "../config/setup.php";
     try {
         $DB = new PDO($DB_DSNAME, $DB_USR, $DB_PWD);
-        $stmt = $DB->prepare("SELECT `username`, `email` FROM `users_info` WHERE `username`=? OR `email`=?");
-        $stmt->execute([$username, $email]);
+        $DB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $stmt = $DB->prepare("SELECT `username`, FROM `users_info` WHERE `username`=?");
+        $stmt->execute([$username]);
         $log = $stmt->fetch();
         if (empty($log)) {
             header("Location: ../front/login.php?error=account_does_not_exist");
@@ -69,6 +70,7 @@ function    sign_up($email, $username, $pwd, $rpwd) {
     }
     try {
         $DB = new PDO($DB_DSNAME, $DB_USR, $DB_PWD);
+        $DB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $stmt = $DB->prepare("SELECT `username`, `email` FROM `user_info` WHERE `username`=? OR `email`=?");
         $stmt->execute([$username, $email]);
         $log = $stmt->fetch();
@@ -76,14 +78,14 @@ function    sign_up($email, $username, $pwd, $rpwd) {
             $pwd = password_hash($pwd, PASSWORD_BCRYPT);
             $acc_id = uniqid();
             try {
-                $stmt = $DB->prepare("INSERT INTO user_info (email, username, `password`, `acc_id`) VALUES (?, ?, ?, ?)");
-                $stmt->execute([$email, $username, $pwd, $acc_id]);
+                $stmt = $DB->prepare("INSERT INTO user_info (email, username, `password`, `acc_id`, `validate`) VALUES (?, ?, ?, ?, false)");
+               $stmt->execute(array($email, $username, $pwd, $acc_id));
+
                     $from = "no-reply@camagru.com";
                     mail($email, "Confirm your account",
-                        "Welcome to Camagru! Please confirm your account by clicking this link http://localhost:8080/login.php?confirm_code=".$acc_id, "From: ".$from);
-                    header("Location: ../front/login.php?success=confirmation_e.mail_send");
-                header('Location: ../front/login.php?success=account_created');
-                exit();
+                        "Welcome to Camagru! Please confirm your account by clicking this link http://".$_SERVER['HTTP_HOST']."/front/login.php?confirm_code=".$acc_id, "From: ".$from);
+                    header("Location: ../front/login.php?success=confirmation_mail_send");
+                    exit();
             } catch (PDOException $e) {
                 header("Location: ../front/login.php?error=database_error");
                 exit();

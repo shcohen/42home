@@ -8,6 +8,19 @@ session_start();
 //    header("Location: /front/login.php?error=accessdenied");
 //    exit;
 //}
+//<div class="field-wrap">
+//                            <p class="enable">Enable or disable notifications
+//                                <input type="checkbox" id="notif" name="checkbox" value="checked" onclick="boxCheck()"></p>
+//                            <script>
+//                                function boxCheck() {
+//                                    var x = document.getElementById("notif");
+//                                    if (onclick){
+//                                        x = document.classList.add("checked")
+//                                    }
+//                                    return (x.checked);
+//                                }
+//                            </script>
+//                        </div> <!-- field-wrap -->
 ?>
 
 <!DOCTYPE html>
@@ -25,9 +38,7 @@ session_start();
 <body>
 <div class="grid-container" id="grid-container">
 
-    <div class="header" id="header">
-        <!--                <h1 style="margin: 0;">CAMAGRU</h1>-->
-    </div>
+    <div class="header" id="header"><h1>CAMAGRU</h1></div>
 
     <div class="navbar">
         <a href="../index.php"><i class="fa fa-fw fa-home"></i> HOME</a>
@@ -52,36 +63,44 @@ session_start();
             <div class="tab-content">
                 <div id="modify">
                     <h1>Welcome Back <?php if (!empty($_SESSION['username'])) { echo htmlspecialchars($_SESSION['username']); }?>!</h1>
-                    <form action="../back/modify.php" method="post">
+                    <form action="../back/modify.php" name="modify" onsubmit="return validateForm()" method="post">
                         <div class="field-wrap">
-                            <input type="text" class="req" placeholder="Enter New Email" name="new_email" required>
-                        </div>
+                            <input type="text" class="req" placeholder="Enter New Email" name="new_email">
+                        </div> <!-- field-wrap -->
                         <div class="field-wrap">
-                            <input type="text" class="req" placeholder="Enter New Username" name="new_uname" required>
-                        </div>
+                            <input type="text" class="req" placeholder="Enter New Username" name="new_uname">
+                        </div> <!-- field-wrap -->
                         <div class="field-wrap">
-                            <input id="myInput" class="req" type="password" placeholder="Enter New Password" name="new_pwd" required>
+                            <input id="myInput" class="req" type="password" placeholder="Enter New Password" name="new_pwd">
                             <p id="text" style="display: none; color: red;">WARNING : CAPS LOCK IS ON.</p>
-                            <script>
-                                var input = document.getElementById("myInput");
-                                var text = document.getElementById("text");
-                                input.addEventListener("keyup", function(event) {
-                                    if (event.getModifierState("CapsLock")) {
-                                        text.style.display = "block"; }
-                                    else {
-                                        text.style.display = "none" }
-                                });
-                            </script>
-                        </div>
+                                <script>
+                                    var input = document.getElementById("myInput");
+                                    var text = document.getElementById("text");
+                                    input.addEventListener("keyup", function(event) {
+                                        if (event.getModifierState("CapsLock")) {
+                                            text.style.display = "block"; }
+                                        else {
+                                            text.style.display = "none" }
+                                    });
+                                </script>
+                        </div> <!-- field-wrap -->
                         <button type="submit" class="button button-block" name="signup-submit">Save Changes</button>
-                    </form>
-                </div>
-
-            </div><!-- tab-content -->
-
+                            <script>
+                                function validateForm() {
+                                    var x = document.forms["modify"]["new_email"].value;
+                                    var y = document.forms["modify"]["new_uname"].value;
+                                    var z = document.forms["modify"]["new_pwd"].value;
+                                    if (x == "" && y == "" && z == "") {
+                                        alert("One of the fields must be filled out");
+                                        return false;
+                                    }
+                                }
+                            </script>
+                    </form> <!-- form -->
+                </div> <!-- modify -->
+            </div> <!-- tab-content -->
         </div> <!-- /form -->
-
-    </div>
+    </div> <!-- main -->
 
     <div class="footer">
         <h1>

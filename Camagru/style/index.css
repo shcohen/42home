@@ -22,6 +22,12 @@ body {
     margin: 0;
     background-color: red;
 }
+    h1 {
+        text-align: center;
+        color: #000000;
+        font-weight: 300;
+        margin: 0;
+    }
 
 /*START OF NAVIGATION BAR*/
 .navbar {

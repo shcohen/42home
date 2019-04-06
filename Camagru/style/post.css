@@ -6,12 +6,6 @@
     border-radius: 4px;
     box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
 }
-    h1 {
-        text-align: center;
-        color: #000000;
-        font-weight: 300;
-        margin: 0;
-    }
 
 .picture {
     text-align: center;
@@ -23,7 +17,11 @@
 }
     .pseudo {
         float: left;
-        width: 12%;
+        width: 15%;
+    }
+    a {
+        text-decoration: none;
+        color: #000000;
     }
     p {
         margin: 0;
@@ -35,11 +33,22 @@
         float: right;
         border: none;
         cursor: pointer;
+        background-color: #f2f2f2;
     }
     .fa-heart {
         float: right;
         border: none;
         cursor: pointer;
+        background-color: #f2f2f2;
+    }
+    textarea {
+        height: 38px;
+        width: 597px;
+        resize: none;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    .addcomment {
+        margin-left: 40%;
     }
 
 .visi {

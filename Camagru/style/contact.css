@@ -62,6 +62,7 @@
         border-radius: 4px;
         resize: vertical;
         max-height: 300px;
+        font-family: Arial, Helvetica, sans-serif;
     }
 
     .sub {

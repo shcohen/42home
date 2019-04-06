@@ -18,9 +18,7 @@ session_start();
 <body>
 <div class="grid-container" id="grid-container">
 
-    <div class="header" id="header">
-                <h1 style="margin: 0;">CAMAGRU</h1>
-    </div>
+    <div class="header" id="header"><h1>CAMAGRU</h1></div>
 
     <div class="navbar">
         <a class="active" href="index.php"><i class="fa fa-fw fa-home"></i> HOME</a>
@@ -35,54 +33,71 @@ session_start();
 
     <div class="main">
         <div class="form">
-            <h1>WANTED: DEAD OR ALIVE</h1>
+            <div class="comment">
+                <div class="pseudo"><a href="front/profile.php"><b>username:</b></a></div>
+                <div class="comsg"><span>"The Legend of Zelda"</span>
+                    <div id="like" class="visi"><a id="like_but" class="fa fa-heart-o active" onclick="likeIt(event)"> 21</a></div>
+                    <div id="liked" class="none"><a id="liked_but" class="fa fa-heart" onclick="likeDIt(event)"> 22</a></div>
+                </div> <!-- comsg -->
+            </div> <!-- comment -->
             <hr>
             <div class="picture">
                 <img src="https://tse3.mm.bing.net/th?id=OIP.v8G-ag9ZeJJeNnppTfu7bQHaHc&pid=Api" style="width: 590px;height: 400px;">
             </div> <!-- picture -->
             <hr>
             <div class="comment">
-                <div class="pseudo"><p><b>pseudo</b></p></div>
-                <div class="comsg"><span>hello</span>
-                    <div id="like" class="visi"><a id="like_but active" class="fa fa-heart-o" onclick="likeIt(event)"></a></div>
-                    <div id="liked" class="none"><a id="liked_but" class="fa fa-heart" onclick="likeDIt(event)"></a></div>
-                </div> <!-- comsg -->
+                <div class="pseudo"><a href="front/profile.php"><b>username:</b></a></div>
+                <div class="comsg"><span>comment</span></div>
             </div> <!-- comment -->
-
             <div class="comment">
-                <div class="pseudo"><p><b>pseudo</b></p></div>
-                <div class="comsg"><span>hello</span>
-                    <div id="like" class="visi"><a id="like_but active" class="fa fa-heart-o" onclick="likeIt(event)"></a></div>
-                    <div id="liked" class="none"><a id="liked_but" class="fa fa-heart" onclick="likeDIt(event)"></a></div>
-                </div> <!-- comsg -->
+                <div class="pseudo"><a href="front/profile.php"><b>username:</b></a></div>
+                <div class="comsg"><span>comment</span></div>
             </div> <!-- comment -->
-
+            <br>
+            <textarea></textarea>
+            <button class="addcomment" type="submit">Comment</button>
         </div> <!-- form -->
 
         <br><br><br><br><br>
 
         <div class="form">
-        <h1 style="margin: 0">WANTED: DEAD OR ALIVE</h1>
-        <hr>
-        <div class="picture">
-            <img src="https://tse3.mm.bing.net/th?id=OIP.v8G-ag9ZeJJeNnppTfu7bQHaHc&pid=Api" style="width: 350px;height: 350px;">
-        </div>
-        <hr>
             <div class="comment">
-                <div class="pseudo"><p><b>pseudo</b></p></div>
-                <div class="comsg"><span>hello</span>
-                    <div id="like" class="visi"><a id="like_but active" class="fa fa-heart-o" onclick="likeIt()"></a></div>
-                    <div id="liked" class="none"><a id="liked_but" class="fa fa-heart" onclick="likeDIt()"></a></div>
+                <div class="pseudo"><a href="front/profile.php"><b>username:</b></a></div>
+                <div class="comsg"><span>"The Legend of Zelda"</span>
+                    <div id="like" class="visi"><a id="like_but" class="fa fa-heart-o active" onclick="likeIt(event)"> 21</a></div>
+                    <div id="liked" class="none"><a id="liked_but" class="fa fa-heart" onclick="likeDIt(event)"> 22</a></div>
                 </div> <!-- comsg -->
             </div> <!-- comment -->
+            <hr>
+            <div class="picture">
+                <img src="https://tse3.mm.bing.net/th?id=OIP.v8G-ag9ZeJJeNnppTfu7bQHaHc&pid=Api" style="width: 590px;height: 400px;">
+            </div> <!-- picture -->
+            <hr>
+            <div class="comment">
+                <div class="pseudo"><a href="front/profile.php"><b>username</b></a></div>
+                <div class="comsg"><span>comment</span></div>
+            </div> <!-- comment -->
+            <div class="comment">
+                <div class="pseudo"><a href="front/profile.php"><b>username</b></a></div>
+                <div class="comsg"><span>comment</span></div>
+            </div> <!-- comment -->
+            <br>
+            <textarea></textarea>
+            <button class="addcomment" type="submit">Comment</button>
+<!--            <script>-->
+<!--                --><?php
+//                function commentLog() {
+//                    var c = document.getElementById("addcomment");
+//                    if (!empty($_SESSION['username'])) {
+//                        alert("You must be logged in to comment");
+//                        return false;
+//                    }
+//                }
+//                ?>
+<!--            </script>-->
+        </div> <!-- form -->
 
-            <div class="comment">
-                <div class="pseudo"><p><b>pseudo</b></p></div>
-                <div class="comsg"><span>hello</span>
-                </div> <!-- comsg -->
-            </div> <!-- comment -->
-    </div>
-</div>
+</div> <!-- main -->
 
 <div class="footer">
         <h1>
@@ -90,9 +105,8 @@ session_start();
             <a href="https://fr.linkedin.com/in/linkedin" class="fa fa-linkedin"></a>
             <a href="https://www.twitter.com/alecsadier" class="fa fa-twitter"></a>
         </h1>
-    </div>
+    </div> <!-- footer -->
 
-</div>
+</div> <!-- grid container-->
 </body>
-
 </html>

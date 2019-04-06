@@ -8,13 +8,9 @@ if (isset($_POST['submit'])){
     $from = "no-reply@camagru.com";
     $mailTo = "shcohen@student.42.fr";
     $headers = "From: ".$from;
-    $subject = $username." from ".$country." has a message for you!";
+    $subject = "".$username." from ".$country." has a message for you!";
 
-    if (mail($mailTo, $subject, $msg, $headers)){
-        echo "yes";
-    } else {
-        echo "no";
-    }
-
-//    header("Location: ../front/contact.php?success=email_send");
+    mail($mailTo, $subject, $msg, $headers);
+    header("Location: ../front/contact.php?success=email_send");
+    exit;
 }

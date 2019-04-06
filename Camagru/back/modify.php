@@ -14,6 +14,7 @@ function    forgotPwd($email) {
     include "../config/setup.php";
     try {
         $DB = new PDO($DB_DSNAME, $DB_USR, $DB_PWD);
+        $DB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $stmt = $DB->prepare("SELECT * FROM user_info WHERE email=?");
         $stmt->execute([$email]);
         $log = $stmt->fetch();
@@ -21,7 +22,7 @@ function    forgotPwd($email) {
             if ($log['email'] === $email) {
                 $from = "no-reply@camagru.com";
                 mail($email, "Reset your password",
-                    "Hello! You asked for a password reset, please click this link to proceed : http://localhost:8080/front/recoverpwd.php?id_reset=".$log['acc_id'], "From: ".$from);
+                    "Hello! You asked for a password reset, please click this link to proceed : http://".$_SERVER['HTTP_HOST']."/front/recoverpwd.php?id_reset=".$log['acc_id'], "From: ".$from);
                 header("Location: ../front/forgotpwd?success=recovery_mail_send");
             } else {
                 header("Location: ../front/forgotpwd.php?error=invalid_email_adress");
@@ -45,6 +46,7 @@ function    resetPwd($id, $new, $check) {
         } else {
             try {
                 $DB = new PDO($DB_DSNAME, $DB_USR, $DB_PWD);
+                $DB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $stmt = $DB->prepare("SELECT * FROM user_info WHERE acc_id=?");
                 $stmt->execute([$id]);
                 $log = $stmt->fetch();
