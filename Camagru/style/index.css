@@ -1,6 +1,5 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background-color: yellow;
     margin: 0;
     padding: 0;
 }
@@ -18,15 +17,11 @@ body {
 
 .header {
     grid-area: header;
-    text-align: center;
-    margin: 0;
-    background-color: red;
 }
     h1 {
         text-align: center;
         color: #000000;
         font-weight: 300;
-        margin: 0;
     }
 
 /*START OF NAVIGATION BAR*/
@@ -67,7 +62,6 @@ body {
 /* START OF FOOTER STUFF*/
 .footer {
     grid-area: footer;
-    background-color: blue;
     text-align: center;
 }
     .fa {

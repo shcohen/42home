@@ -12,7 +12,7 @@ session_start();
     <link rel="stylesheet" href="style/index.css" type="text/css" media="screen">
     <link rel="stylesheet" href="style/post.css" type="text/css" media="screen">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script async src="js/like.js"></script>
+    <script async src="/js/like.js"></script>
 </head>
 
 <body>
@@ -23,19 +23,30 @@ session_start();
     <div class="navbar">
         <a class="active" href="index.php"><i class="fa fa-fw fa-home"></i> HOME</a>
         <a href="front/contact.php"><i class="fa fa-fw fa-envelope"></i> CONTACT</a>
-        <a href="front/login.php"><i class="fa fa-fw fa-user"></i><?php if (!empty($_SESSION['username'])) { echo htmlspecialchars($_SESSION['username']); } else {?> LOGIN<?php }?></a>
+        <a href="front/login.php"><i class="fa fa-fw fa-user"></i><?php if (!empty($_SESSION['username'])) { echo " ".htmlspecialchars($_SESSION['username']); } else {?> LOGIN<?php }?></a>
         <?php
-            if (isset($_SESSION['username'])) {
-                echo '<a style="float: right;" href="back/logout.php">LOGOUT</a>';
-            }
-        ?>
+        if (isset($_SESSION['username'])) {
+            echo '<a style="float: right;" href="back/logout.php"><i class="fa fa-sign-out" aria-hidden="true"></i> LOGOUT</a>';
+        } ?>
     </div>
 
     <div class="main">
+        <?php
+        $posts = array(
+                array(
+                        "id" => 0,
+                        "username" => "coucou"
+                ),
+            array(
+                    "id" => 1,
+                "username" => "coucou2"
+            ),
+        );
+        foreach ($posts as $post) { ?>
         <div class="form">
             <div class="comment">
-                <div class="pseudo"><a href="front/profile.php"><b>username:</b></a></div>
-                <div class="comsg"><span>"The Legend of Zelda"</span>
+                <div class="pseudo"><a href="/front/profile.php?id=<?= $post['id']; ?>"><b>username:</b></a></div>
+                <div class="comsg"><span><?= $post['username']; ?> "The Legend of Zelda"</span>
                     <div id="like" class="visi"><a id="like_but" class="fa fa-heart-o active" onclick="likeIt(event)"> 21</a></div>
                     <div id="liked" class="none"><a id="liked_but" class="fa fa-heart" onclick="likeDIt(event)"> 22</a></div>
                 </div> <!-- comsg -->
@@ -54,49 +65,20 @@ session_start();
                 <div class="comsg"><span>comment</span></div>
             </div> <!-- comment -->
             <br>
+            <div>
             <textarea></textarea>
-            <button class="addcomment" type="submit">Comment</button>
+            <button class="addcomment" type="submit" onclick="return logComment()">Comment</button>
+                <script>
+                    function logComment() {
+                        <?php if (empty($_SESSION['username'])) { ?>
+                            alert("You must be logged in to comment this post");
+                            return false;
+                        <?php } ?>
+                    }
+                </script>
+            </div>
         </div> <!-- form -->
-
-        <br><br><br><br><br>
-
-        <div class="form">
-            <div class="comment">
-                <div class="pseudo"><a href="front/profile.php"><b>username:</b></a></div>
-                <div class="comsg"><span>"The Legend of Zelda"</span>
-                    <div id="like" class="visi"><a id="like_but" class="fa fa-heart-o active" onclick="likeIt(event)"> 21</a></div>
-                    <div id="liked" class="none"><a id="liked_but" class="fa fa-heart" onclick="likeDIt(event)"> 22</a></div>
-                </div> <!-- comsg -->
-            </div> <!-- comment -->
-            <hr>
-            <div class="picture">
-                <img src="https://tse3.mm.bing.net/th?id=OIP.v8G-ag9ZeJJeNnppTfu7bQHaHc&pid=Api" style="width: 590px;height: 400px;">
-            </div> <!-- picture -->
-            <hr>
-            <div class="comment">
-                <div class="pseudo"><a href="front/profile.php"><b>username</b></a></div>
-                <div class="comsg"><span>comment</span></div>
-            </div> <!-- comment -->
-            <div class="comment">
-                <div class="pseudo"><a href="front/profile.php"><b>username</b></a></div>
-                <div class="comsg"><span>comment</span></div>
-            </div> <!-- comment -->
-            <br>
-            <textarea></textarea>
-            <button class="addcomment" type="submit">Comment</button>
-<!--            <script>-->
-<!--                --><?php
-//                function commentLog() {
-//                    var c = document.getElementById("addcomment");
-//                    if (!empty($_SESSION['username'])) {
-//                        alert("You must be logged in to comment");
-//                        return false;
-//                    }
-//                }
-//                ?>
-<!--            </script>-->
-        </div> <!-- form -->
-
+        <?php } ?>
 </div> <!-- main -->
 
 <div class="footer">

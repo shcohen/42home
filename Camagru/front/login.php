@@ -1,5 +1,10 @@
 <?php
+require_once ("../back/user_info.php");
 session_start();
+if (!empty($_SESSION['username'])) {
+    header("Location: /front/account.php?error=accessdenied");
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -8,25 +13,25 @@ session_start();
 <head>
     <title>Camagru</title>
     <meta charset="UTF-8">
-    <link rel="icon" href="../assets/icon.png">
-    <link rel="stylesheet" href="../style/index.css" type="text/css" media="screen">
-    <link rel="stylesheet" href="../style/login.css" type="text/css" media="screen">
+    <link rel="icon" href="/assets/icon.png">
+    <link rel="stylesheet" href="/style/index.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="/style/login.css" type="text/css" media="screen">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script async src="../js/login.js"></script>
+    <script async src="/js/login.js"></script>
 </head>
 
 <body>
 <div class="grid-container" id="grid-container">
-    <div class="header" id="header">
-                <h1 style="margin: 0;">CAMAGRU</h1>
-    </div>
+
+    <div class="header" id="header"><h1>CAMAGRU</h1></div>
+
     <div class="navbar">
-        <a href="../index.php"><i class="fa fa-fw fa-home"></i> HOME</a>
-        <a href="contact.php"><i class="fa fa-fw fa-envelope"></i> CONTACT</a>
-        <a class="active" href="login.php"><i class="fa fa-fw fa-user"></i><?php if (!empty($_SESSION['username'])) { echo htmlspecialchars($_SESSION['username']); } else {?> LOGIN<?php }?></a>
+        <a href="/index.php"><i class="fa fa-fw fa-home"></i> HOME</a>
+        <a href="/front/contact.php"><i class="fa fa-fw fa-envelope"></i> CONTACT</a>
+        <a class="active" href="/front/login.php"><i class="fa fa-fw fa-user"></i><?php if (!empty($_SESSION['username'])) { echo htmlspecialchars($_SESSION['username']); } else {?> LOGIN<?php }?></a>
         <?php
             if (isset($_SESSION['username'])) {
-                echo '<a style="float: right;" href="../back/logout.php">LOGOUT</a>';
+                echo '<a style="float: right;" href="/back/logout.php">LOGOUT</a>';
             }
         ?>
     </div>
@@ -43,7 +48,7 @@ session_start();
             <div class="tab-content">
                 <div id="signup" class="visi">
                     <h1>Nice to meet you!</h1>
-                    <form action="../back/user_info.php" method="post">
+                    <form action="/back/user_info.php" method="post">
                         <div class="field-wrap">
                             <input type="text" class="req" placeholder="Enter Email" name="email" required>
                         </div>
@@ -52,7 +57,7 @@ session_start();
                         </div>
                         <div class="field-wrap">
                             <input id="myInput" class="req" type="password" placeholder="Enter Password" name="pwd" required>
-                            <p id="text" style="display: none; color: red;">WARNING : CAPS LOCK IS ON.</p>
+                            <p id="text" style="display: none; color: red;">WARNING: CAPS LOCK IS ON.</p>
                             <script>
                                 var input = document.getElementById("myInput");
                                 var text = document.getElementById("text");
@@ -66,7 +71,7 @@ session_start();
                         </div>
                         <div class="field-wrap">
                             <input id="inputo" class="req" type="password" placeholder="Repeat Password" name="rpwd" required>
-                            <p id="texto" style="display: none; color: red;">WARNING : CAPS LOCK IS ON.</p>
+                            <p id="texto" style="display: none; color: red;">WARNING: CAPS LOCK IS ON.</p>
                             <script>
                                 var input = document.getElementById("inputo");
                                 var text = document.getElementById("texto");
@@ -78,14 +83,14 @@ session_start();
                                 });
                             </script>
                         </div>
-                        <p class="forgot">By creating an account you agree to our <a href="terms.php" style="color: #777777;">Terms & Privacy.</a></p>
+                        <p class="forgot">By creating an account you agree to our <a href="/front/terms.php" style="color: #777777;">Terms & Privacy.</a></p>
                         <button type="submit" class="button button-block" name="signup-submit">Get Started</button>
                     </form>
                 </div>
 
                 <div id="signin" class="none">
                     <h1>Glad to see you again!</h1>
-                    <form action="../back/user_info.php" method="post">
+                    <form action="/back/user_info.php" method="post">
                         <div class="field-wrap">
                             <input type="text" placeholder="Enter Username" name="uname" required>
                         </div>
@@ -103,7 +108,7 @@ session_start();
                                 });
                             </script>
                         </div>
-                        <p class="forgot"><a href="forgotpwd.php" style="color: #777777;">Forgot Password?</a></p>
+                        <p class="forgot"><a href="/front/forgotpwd.php" style="color: #777777;">Forgot Password?</a></p>
                         <button type="submit" class="button button-block" name="signin-submit">Let's Go</button>
                     </form>
                 </div>
