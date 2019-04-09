@@ -12,5 +12,5 @@ if (isset($_POST['submit'])){
 
     mail($mailTo, $subject, $msg, $headers);
     header("Location: ../front/contact.php?success=email_send");
-    exit;
+    exit();
 }

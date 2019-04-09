@@ -20,7 +20,7 @@ if (!empty($_SESSION['id'])) {
 <body>
 <div class="grid-container" id="grid-container">
 
-    <div class="header" id="header"><h1>CAMAGRU</h1></div>
+    <div class="header" id="header"><h1 class="title">CAMAGRU</h1></div>
 
     <div class="navbar">
         <a href="/index.php"><i class="fa fa-fw fa-home"></i> HOME</a>
@@ -34,11 +34,11 @@ if (!empty($_SESSION['id'])) {
                 <li><a>Recovering Data</a></li>
             </ul>
 
-            <br><br><br>
+            <br><br>
 
             <div class="tab-content">
                 <div id="modify">
-                    <h1>You will receive an email allowing you to reset your password.</h1>
+                    <h1>You will receive an email allowing you to reset your password.</h1> <br>
                     <form action="/back/modify.php" method="post">
                         <div class="field-wrap">
                             <input type="text" class="req" placeholder="Enter Email" name="reco_email" required>

@@ -18,7 +18,7 @@ session_start();
 <body>
 <div class="grid-container" id="grid-container">
 
-    <div class="header" id="header"><h1>CAMAGRU</h1></div>
+    <div class="header" id="header"><h1 class="title">CAMAGRU</h1></div>
 
     <div class="navbar">
         <a class="active" href="index.php"><i class="fa fa-fw fa-home"></i> HOME</a>
@@ -45,6 +45,8 @@ session_start();
         foreach ($posts as $post) { ?>
         <div class="form">
             <div class="comment">
+                <div style="text-align: center"><i>21/02/18 at 18h05</i></div>
+                <br>
                 <div class="pseudo"><a href="/front/profile.php?id=<?= $post['id']; ?>"><b>username:</b></a></div>
                 <div class="comsg"><span><?= $post['username']; ?> "The Legend of Zelda"</span>
                     <div id="like" class="visi"><a id="like_but" class="fa fa-heart-o active" onclick="likeIt(event)"> 21</a></div>

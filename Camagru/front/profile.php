@@ -22,7 +22,7 @@ session_start();
 <body>
 <div class="grid-container" id="grid-container">
 
-    <div class="header" id="header"><h1>CAMAGRU</h1></div>
+    <div class="header" id="header"><h1 class="title">CAMAGRU</h1></div>
 
     <div class="navbar">
         <a class="active" href="/index.php"><i class="fa fa-fw fa-home"></i> HOME</a>

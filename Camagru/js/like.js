@@ -1,5 +1,5 @@
 function    likeIt(event) {
-    // console.log(event.srcElement.classList.add('liked_but'));
+    console.log(event.srcElement.classList.add('liked_but'));
     let like = document.getElementById('like');
     let liked = document.getElementById('liked');
     let liked_but = document.getElementById('liked_but');

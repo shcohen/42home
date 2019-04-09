@@ -35,7 +35,7 @@ try {
 <body>
 <div class="grid-container" id="grid-container">
 
-    <div class="header" id="header"><h1>CAMAGRU</h1></div>
+    <div class="header" id="header"><h1 class="title">CAMAGRU</h1></div>
 
     <div class="navbar">
         <a href="/index.php"><i class="fa fa-fw fa-home"></i> HOME</a>
@@ -49,11 +49,11 @@ try {
                 <li><a>Setting New Password</a></li>
             </ul>
 
-            <br><br><br>
+            <br><br>
 
             <div class="tab-content">
                 <div id="modify">
-                    <h1>Hello!</h1>
+                    <h1>Hello!</h1> <br>
                     <form action="/back/modify.php?id_reset=<?= $_GET['id_reset']?>" method="post">
                         <div class="field-wrap">
                             <input id="input" type="password" class="req" placeholder="Enter New Password" name="new_pwd" required>

@@ -7,6 +7,12 @@ if (!empty($_POST['reco_email'])) {
 } else if (!empty($_POST['new_email']) || !empty($_POST['new_uname']) || !empty($_POST['pwd']) && !empty($_POST['new_check'])) {
     session_start();
     updateInfo($_POST['new_email'], $_POST['new_uname'], $_POST['pwd'], $_POST['new_check'], $_SESSION['id']);
+} else if (!empty($_POST['update']) && $_POST['update'] === 'notify' && !empty($_POST['checkbox'])) {
+    session_start();
+    $value = $_POST['checkbox'] === 'true' ? 1 : 0;
+    echo $value;
+    ableNotify($_SESSION['id'], $value);
+    exit ;
 } else {
     session_start();
     if (!empty($_SESSION)) {
@@ -94,40 +100,40 @@ function    resetPwd($id, $new, $check) {
     }
 }
 
-function    notiFy($id) {
+function    ableNotify($id, $notif) {
     require "../config/database.php";
     include "../config/setup.php";
     try {
         $DB = new PDO($DB_DSNAME, $DB_USR, $DB_PWD);
         $DB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $stmt = $DB->prepare("SELECT `notif` FROM `user_info` WHERE `acc_id`=?");
+        $stmt = $DB->prepare("SELECT `notify` FROM `user_info` WHERE `acc_id`=?");
         $stmt->execute([$id]);
         $log = $stmt->fetch();
         if (!empty($log)) {
-            if (intval($log['notif']) === 1) {
+            if (intval($log['notify']) === 1) {
                 try {
-                    $stmt = $DB->prepare("UPDATE `user_info` SET `notif`=? WHERE acc_id=?");
-                    $stmt->execute([0, $id]);
-                    header("Location: /front/account.php?success=notifications_disabled");
+                    $stmt = $DB->prepare("UPDATE `user_info` SET `notify`=? WHERE acc_id=?");
+                    $stmt->execute([$notif, $id]);
+                    echo "OK";
                     exit();
                 } catch (PDOException $e) {
-                    header("Location: /front/account.php?error=database_error");
+                    echo "KO";
                     exit();
                 }
-            } else if (intval($log['notif']) === 0){
+            } else if (intval($log['notify']) === 0){
                 try {
-                    $stmt = $DB->prepare("UPDATE `user_info` SET `notif`=? WHERE acc_id=?");
-                    $stmt->execute([1, $id]);
-                    header("Location: /front/account.php?success=notifications_enabled");
+                    $stmt = $DB->prepare("UPDATE `user_info` SET `notify`=? WHERE acc_id=?");
+                    $stmt->execute([$notif, $id]);
+                    echo "OK";
                     exit();
                 } catch (PDOException $e) {
-                    header("Location: /front/account.php?error=database_error");
+                    echo "KO";
                     exit();
                 }
             }
         }
     } catch (PDOException $e) {
-        header("Location: /front/account.php?error=database_error");
+        echo "KO";
         exit();
     }
 }
@@ -138,16 +144,16 @@ function    updateInfo($email, $username, $new, $check, $id){
     require "../config/database.php";
     include "../config/setup.php";
 
-    if ((!filter_var($email, FILTER_VALIDATE_EMAIL)) && !preg_match("/^[a-zA-Z0-9]{5,25}$/", $username)) {
+    if ((!empty($email) && !filter_var($email, FILTER_VALIDATE_EMAIL)) && !empty($username) && !preg_match("/^[a-zA-Z0-9]{5,25}$/", $username)) {
         header("Location: /front/account.php?error=invalid_fields=email&username");
         exit();
-    } if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    } if (!empty($email) && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
         header("Location: /front/account.php?error=invalid_email_address");
         exit();
-    } if (!preg_match("/^[a-zA-Z0-9]{5,25}$/", $username)) {
+    } if (!empty($username) && !preg_match("/^[a-zA-Z0-9]{5,25}$/", $username)) {
         header("Location: /front/account.php?error=invalid_username");
         exit();
-    } if (!preg_match("/^.{6,30}$/", $new) || !preg_match("/^.{6,30}$/", $check) || $new !== $check) {
+    } if (!empty($new) && !empty($check) && !preg_match("/^.{6,30}$/", $new) && !preg_match("/^.{6,30}$/", $check) && $new !== $check) {
         header("Location: /front/account.php?error=invalid_pwd");
         exit();
     }

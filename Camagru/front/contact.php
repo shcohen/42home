@@ -12,12 +12,13 @@ session_start();
     <link rel="stylesheet" href="/style/index.css" type="text/css" media="screen">
     <link rel="stylesheet" href="/style/contact.css" type="text/css" media="screen">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script async src="/js/like.js"></script>
 </head>
 
 <body>
 <div class="grid-container" id="grid-container">
 
-    <div class="header" id="header"><h1>CAMAGRU</h1></div>
+    <div class="header" id="header"><h1 class="title">CAMAGRU</h1></div>
 
     <div class="navbar">
         <a href="/index.php"><i class="fa fa-fw fa-home"></i> HOME</a>
@@ -30,60 +31,46 @@ session_start();
     </div>
 
     <div class="main">
-        <div class="wrapper">
-            <div class="box1">
-                <div class="imgcontainer">
-                    <img src="/assets/img_avatar2.jpg" alt="Avatar" class="avatar">
-                    <img src="/assets/img_avatar1.jpg" alt="Avatar" class="avatar">
-                    <img src="/assets/img_avatar.jpg" alt="Avatar" class="avatar">
-                            <h2 class="h2">Meet the Team</h2>
-                </div>
-            </div>
+        <div class="form">
+            <ul class="tab-group">
+                <li><a>Contact Camagru's Team</a></li>
+            </ul>
 
-        <div class="box2">
-            <form action="/back/contactform.php" method="post">
-                <div class="row">
-                    <div class="col-25">
-                        <label for="uname"><b>Username</b></label>
-                    </div>
-                    <div class="col-75">
-                        <input type="text" id="uname" name="uname" placeholder="Enter Username" required>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-25">
-                        <label for="country"><b>Country</b></label>
+            <br><br>
 
-                    </div>
-                    <div class="col-75">
-                        <select id="country" name="country">
-                            <option value="France">France</option>-->
-                            <option value="Canada">Canada</option>
-                            <option value="Hyrule">Hyrule</option>
-                            <option value="Narnia">Narnia</option>
-                            <option value="Middle Earth">Middle Earth</option>
-                            <option value="Kaamelott">Kaamelott</option>
-                            <option value="Westeros">Westeros</option>
-                            <option value="Vulcan">Vulcan</option>
-                            <option value="Naboo">Naboo</option>
-                        </select>
-                    </div>
+            <div class="tab-content">
+                <div id="modify">
+                    <form action="/back/contactform.php" method="post">
+                        <h1>How can we help you today?</h1><br>
+                        <div class="field-wrap">
+                            <input type="text" id="uname" placeholder="Enter Username" name="uname" required>
+                        </div>
+                        <div class="field-wrap">
+                            <div>
+                                <select id="country" name="country" required>
+                                    <option selected disabled hidden>Choose Country</option>
+                                    <option value="France">France</option>
+                                    <option value="Canada">Canada</option>
+                                    <option value="Hyrule">Hyrule</option>
+                                    <option value="Narnia">Narnia</option>
+                                    <option value="Middle Earth">Middle Earth</option>
+                                    <option value="Kaamelott">Kaamelott</option>
+                                    <option value="Westeros">Westeros</option>
+                                    <option value="Vulcan">Vulcan</option>
+                                    <option value="Naboo">Naboo</option>
+                                </select></div>
+                        </div>
+                        <div>
+                            <textarea class="msg" id="subject" name="subject" placeholder="Write something here..." style="height:200px" required></textarea>
+                        </div>
+                        <br>
+                        <button type="submit" class="button button-block" name="submit">Send Mail</button>
+                    </form>
                 </div>
-                <div class="row">
-                    <div class="col-25">
-                        <label for="subject"><b>Subject</b></label>
-                    </div>
-                    <div class="col-75">
-                        <textarea id="subject" name="subject" placeholder="Write something here..." style="height:200px" required></textarea>
-                    </div>
-                </div>
-                <div class="row">
-                    <button class="sub" type="submit" name="submit">Send Mail</button>
-                </div>
-            </form>
-        </div>
+            </div> <!-- tab-content -->
+        </div> <!-- form -->
     </div>
-    </div>
+
     <div class="footer">
         <h1>
             <a href="https://www.facebook.com/jinsere.mon.nom" class="fa fa-facebook"></a>
@@ -91,7 +78,5 @@ session_start();
             <a href="https://www.twitter.com/alecsadier" class="fa fa-twitter"></a>
         </h1>
     </div>
-</div>
-</body>
 
-</html>
+</div>

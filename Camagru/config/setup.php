@@ -8,6 +8,7 @@ try {
     $stmt = $DB->query("CREATE DATABASE IF NOT EXISTS $DB_NAME DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci");
     $stmt->execute();
 } catch (PDOException $e) {
+    echo $e;
     throw $e;
 }
 
