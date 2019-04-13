@@ -71,7 +71,7 @@ function    resetPwd($id, $new, $check) {
                 if (!empty($log)) {
                     try {
                         if (password_verify($new, $log['password'])) {
-                            header("Location: /front/recoverpwd.php?account=same_pwd");
+                            header("Location: /front/recoverpwd.php?error=account=same_pwd");
                             exit();
                         }
                         $pwd = password_hash($new, PASSWORD_BCRYPT);

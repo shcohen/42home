@@ -23,6 +23,10 @@ session_start();
     <div class="navbar">
         <a class="active" href="index.php"><i class="fa fa-fw fa-home"></i> HOME</a>
         <a href="front/contact.php"><i class="fa fa-fw fa-envelope"></i> CONTACT</a>
+        <?php
+        if (!empty($_SESSION['username'])) {
+            echo "<a href=\"/front/webcam.php\"><i class=\"fa fa-camera\"></i> POST</a>";
+        } ?>
         <a href="front/login.php"><i class="fa fa-fw fa-user"></i><?php if (!empty($_SESSION['username'])) { echo " ".htmlspecialchars($_SESSION['username']); } else {?> LOGIN<?php }?></a>
         <?php
         if (isset($_SESSION['username'])) {
@@ -69,7 +73,7 @@ session_start();
             <br>
             <div>
             <textarea></textarea>
-            <button class="addcomment" type="submit" onclick="return logComment()">Comment</button>
+            <button class="button" type="submit" onclick="return logComment()">Comment</button>
                 <script>
                     function logComment() {
                         <?php if (empty($_SESSION['username'])) { ?>

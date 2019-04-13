@@ -36,6 +36,10 @@ if (empty($_SESSION['id'])) {
     <div class="navbar">
         <a href="/index.php"><i class="fa fa-fw fa-home"></i> HOME</a>
         <a href="/front/contact.php"><i class="fa fa-fw fa-envelope"></i> CONTACT</a>
+        <?php
+        if (!empty($_SESSION['username'])) {
+            echo "<a href=\"/front/webcam.php\"><i class=\"fa fa-camera\"></i> POST</a>";
+        } ?>
         <a class="active" href="/front/account.php"><i class="fa fa-fw fa-user"></i><?php if (!empty($_SESSION['username'])) { echo " ".htmlspecialchars($_SESSION['username']); } else {?> LOGIN<?php }?></a>
         <?php
         if (isset($_SESSION['username'])) {

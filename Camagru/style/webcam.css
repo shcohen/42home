@@ -1,0 +1,147 @@
+/**, *:before, *:after {*/
+/*    box-sizing: border-box;*/
+/*}*/
+
+.contain {
+    display: grid;
+    grid-template-columns: 650px 650px 650px;
+    grid-column-gap: 100px;
+    grid-template-rows: auto;
+    grid-template-areas:
+            ". choose ."
+            "stickers webcam previous";
+    justify-content: center;
+}
+    .choose {
+        grid-area: choose;
+        /*background-color: blue;*/
+        justify-self: center;
+        align-self: center;
+    }
+    .webcam {
+        grid-area: webcam;
+        /*background-color: yellow;*/
+        justify-self: center;
+        align-self: center;
+    }
+    .stickers {
+        grid-area: stickers;
+        /*background-color: red;*/
+        /*justify-self: center;*/
+        /*align-self: center;*/
+    }
+    .previous {
+        grid-area: previous;
+        /*background-color: purple;*/
+        /*justify-self: center;*/
+        /*align-self: center;*/
+    }
+/* END OF GRID DISPLAYING*/
+
+/* IMAGES */
+#img {
+    width: 600px;
+    height: 450px;
+}
+    .visi {
+        display: block;
+    }  .none {
+        display: none;
+    }
+.old {
+    width: 572px;
+    height: 372px;
+}
+.relative {
+      position: relative;
+      bottom: 430px;
+      left: 20px;
+      height: 0;
+  }
+
+/* ICONS */
+.fa.yo{
+    padding: 85px !important;
+    font-size: 100px !important;
+    cursor: pointer;
+}
+    .fa.ya{
+        padding: 230px !important;
+        font-size: 100px !important;
+        cursor: pointer;
+    }
+    .fa-arrow-up .fa.fa-arrow-down{
+        font-size: 40px !important;
+        margin-left: 281px;
+    }
+    .fa.arrow-left .fa.arrow-right {
+        background-color: blue;
+    }
+/* FORM */
+.form {
+    background: white;
+    padding: 40px;
+    max-width: 600px;
+    margin: 40px auto;
+    border-radius: 4px;
+    box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
+}
+.tab-group {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 40px 0;
+}
+    .tab-group p {
+        display: block;
+        text-decoration: none;
+        padding: 15px;
+        background: #e0dedc;
+        color: #000000;
+        font-size: 20px;
+        /*float: left;*/
+        /*width: 100%;*/
+        text-align: center;
+        transition: .5s ease;
+    }
+
+/* ABOUT THE BUTTON */
+.butt {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 -30px 0;
+}
+    .button {
+        cursor: pointer;
+        border: solid 1px #ffffff;
+        outline: none;
+        padding: 15px 0;
+        font-size: 2rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: .1em;
+        background: #c794cc;
+        color: #000000;
+        transition: all 0.5s ease;
+    }
+    .button:hover, .button:focus {
+        background: #b571bc;
+    }
+    .button-block {
+        display: block;
+        width: 100%;
+    }
+    .xa {
+        background: #21d77e;
+    } .xa:hover, .xa:focus{
+              background: #34c47d;
+          }
+    .xo {
+        background: #ffff00 ;
+    } .xo:hover, .xo:focus {
+              background: #ffea00;
+          }
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+}

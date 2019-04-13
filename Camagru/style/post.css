@@ -59,6 +59,11 @@
     display: none;
 }
 
+.button {
+    margin-left: 40%;
+}
+
+
 @media screen and (max-width: 600px) {
 
 }

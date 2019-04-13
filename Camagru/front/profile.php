@@ -4,7 +4,21 @@ session_start();
 //- toute les info seront sous forme de tableau
 //- tu fais une boucles ForEache sur ce tableau
 //- tu affiche chaque elem avec toutes les info associer
-?>
+
+if (empty($_SESSION['id'])) {
+    header("Location: /front/index.php?error=accessdenied");
+    exit();
+} try {
+    require "../config/database.php";
+    include "../config/setup.php";
+    $DB = new PDO($DB_DSNAME, $DB_USR, $DB_PWD);
+    $DB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $stmt = $DB->prepare("SELECT `notify` FROM `user_info` WHERE `acc_id`=?");
+    $stmt->execute([$_SESSION['id']]);
+    $log = $stmt->fetch();
+} catch (PDOException $e) {
+    header("Location: /front/account.php?error=database_error");
+} ?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -27,6 +41,10 @@ session_start();
     <div class="navbar">
         <a class="active" href="/index.php"><i class="fa fa-fw fa-home"></i> HOME</a>
         <a href="/front/contact.php"><i class="fa fa-fw fa-envelope"></i> CONTACT</a>
+        <?php
+        if (!empty($_SESSION['username'])) {
+            echo "<a href=\"/front/webcam.php\"><i class=\"fa fa-camera\"></i> POST</a>";
+        } ?>
         <a href="/front/login.php"><i class="fa fa-fw fa-user"></i><?php if (!empty($_SESSION['username'])) { echo " ".htmlspecialchars($_SESSION['username']); } else {?> LOGIN<?php }?></a>
         <?php
         if (isset($_SESSION['username'])) {
