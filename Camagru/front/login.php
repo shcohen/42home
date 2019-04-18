@@ -4,8 +4,7 @@ session_start();
 if (!empty($_SESSION['username'])) {
     header("Location: /front/account.php?error=accessdenied");
     exit();
-}
-?>
+} ?>
 
 <!DOCTYPE html>
 <html lang="fr">

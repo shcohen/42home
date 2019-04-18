@@ -2,6 +2,7 @@
 /*    box-sizing: border-box;*/
 /*}*/
 
+/* DISPLAY GRID */
 .contain {
     display: grid;
     grid-template-columns: 650px 650px 650px;
@@ -14,27 +15,23 @@
 }
     .choose {
         grid-area: choose;
-        /*background-color: blue;*/
         justify-self: center;
         align-self: center;
     }
     .webcam {
         grid-area: webcam;
-        /*background-color: yellow;*/
         justify-self: center;
         align-self: center;
     }
     .stickers {
         grid-area: stickers;
-        /*background-color: red;*/
-        /*justify-self: center;*/
-        /*align-self: center;*/
+        justify-self: center;
+        align-self: center;
     }
     .previous {
         grid-area: previous;
-        /*background-color: purple;*/
-        /*justify-self: center;*/
-        /*align-self: center;*/
+        justify-self: center;
+        align-self: center;
     }
 /* END OF GRID DISPLAYING*/
 
@@ -52,12 +49,18 @@
     width: 572px;
     height: 372px;
 }
-.relative {
-      position: relative;
-      bottom: 430px;
-      left: 20px;
-      height: 0;
-  }
+#video {
+    width: 600px;
+    height: 450px;
+}
+#videos {
+    width: 600px;
+    height: 450px;
+}
+#red {
+    width: 600px;
+    height: 450px;
+}
 
 /* ICONS */
 .fa.yo{
@@ -70,13 +73,65 @@
         font-size: 100px !important;
         cursor: pointer;
     }
-    .fa-arrow-up .fa.fa-arrow-down{
-        font-size: 40px !important;
-        margin-left: 281px;
+    #up {
+        cursor: pointer;
+        font-size: 25px !important;
+        position: relative;
+        left: 293px;
     }
-    .fa.arrow-left .fa.arrow-right {
-        background-color: blue;
+    #down {
+        cursor: pointer;
+        font-size: 25px !important;
+        position: relative;
+        left: 293px;
     }
+    #left {
+        cursor: pointer;
+        font-size: 25px !important;
+        position: relative;
+        top: 242px;
+        left: -27px;
+    }
+    #right {
+        cursor: pointer;
+        font-size: 25px !important;
+        position: relative;
+        top: -236px;
+        left: 610px;
+    }
+    #stickers {
+        position: relative;
+        width: 200px;
+        height: 200px;
+    }
+    #up2 {
+        cursor: pointer;
+        font-size: 25px !important;
+        position: relative;
+        left: 293px;
+    }
+    #down2 {
+        cursor: pointer;
+        font-size: 25px !important;
+        position: relative;
+        left: 293px;
+    }
+    #left2 {
+        cursor: pointer;
+        font-size: 25px !important;
+        position: relative;
+        top: 242px;
+        left: -27px;
+    }
+    #right2 {
+        cursor: pointer;
+        font-size: 25px !important;
+        position: relative;
+        /*top: 208px;*/
+        top: -234px !important;
+        left: 610px;
+    }
+
 /* FORM */
 .form {
     background: white;
@@ -98,13 +153,17 @@
         background: #e0dedc;
         color: #000000;
         font-size: 20px;
-        /*float: left;*/
-        /*width: 100%;*/
         text-align: center;
         transition: .5s ease;
     }
+    textarea {
+        font-family: Arial, Helvetica, sans-serif;
+        width: 614px;
+        height: 34px;
+    }
 
-/* ABOUT THE BUTTON */
+
+/* BUTTONS */
 .butt {
     display: flex;
     list-style: none;
@@ -144,4 +203,66 @@
 
 /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {
+    .contain {
+        display: inline;
+        align-self: center;
+    }
+    .form {
+        width: 225px;
+        align-self: center;
+    }
+    .fa.ya {
+        padding: 92px !important;
+        font-size: 50px !important;
+        cursor: pointer;
+    }
+    .fa.yo {
+        padding: 33px !important;
+        font-size: 50px !important;
+        cursor: pointer;
+    }
+    .butt {
+        display: inline-block;
+        list-style: none;
+        padding: 0;
+        margin: 20px 0 -30px 0;
+    }
+    #uploadbut {
+        margin-left: 25%;
+    }
+    #video {
+        width: 240px !important;
+        height: 200px !important;
+    }
+    #img {
+        width: 240px !important;
+        height: 200px !important;
+    }
+    #red {
+        width: 240px !important;
+        height: 200px !important;
+    }
+    .fa-arrow-up {
+       display: none !important;
+    }
+    .fa-arrow-down {
+        display: none !important;
+    }
+    .fa-arrow-left {
+        display: none !important;
+    }
+    .fa-arrow-right {
+        display: none !important;
+    }
+
+    #stickers {
+        position: relative;
+        width: 100px;
+        height: 100px;
+        top: -450px !important;
+        left: 120px !important;
+    }
+    .relative {
+        position: relative;
+    }
 }
