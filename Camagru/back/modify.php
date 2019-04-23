@@ -12,17 +12,17 @@ if (!empty($_POST['reco_email'])) {
     $value = $_POST['checkbox'] === 'true' ? 1 : 0;
     echo $value;
     ableNotify($_SESSION['id'], $value);
-    exit ;
+    exit();
 } else {
     session_start();
     if (!empty($_SESSION)) {
         header("Location: /front/account.php");
         exit();
-    } else {
+    } else
         session_destroy();
-    }
 }
 
+// SEND FORGOT PASSWORD LINK
 function    forgotPwd($email) {
     require "../config/database.php";
     include "../config/setup.php";
@@ -54,6 +54,7 @@ function    forgotPwd($email) {
     }
 }
 
+// RESET PASSWORD
 function    resetPwd($id, $new, $check) {
     require "../config/database.php";
     include "../config/setup.php";
@@ -100,6 +101,7 @@ function    resetPwd($id, $new, $check) {
     }
 }
 
+// ENABLE OR DISABLE NOTIFICATIONS
 function    ableNotify($id, $notif) {
     require "../config/database.php";
     include "../config/setup.php";
@@ -138,8 +140,7 @@ function    ableNotify($id, $notif) {
     }
 }
 
-
-
+// MODIFY USER INFOS
 function    updateInfo($email, $username, $new, $check, $id){
     require "../config/database.php";
     include "../config/setup.php";

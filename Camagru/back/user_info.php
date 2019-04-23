@@ -16,6 +16,7 @@ if (!empty($_POST['uname']) && !empty($_POST['pwd'])) {
     }
 }
 
+// CONFIRM ACCOUNT TROUGHOUT EMAIL
 function    confirm($code) {
     require "../config/database.php";
     include "../config/setup.php";
@@ -45,6 +46,7 @@ function    confirm($code) {
     }
 }
 
+// SIGN IN
 function    sign_in($username, $pwd) {
     require "../config/database.php";
     include "../config/setup.php";
@@ -87,7 +89,7 @@ function    sign_in($username, $pwd) {
     }
 }
 
-
+// SIGN UP
 function    sign_up($email, $username, $pwd, $rpwd) {
     require "../config/database.php";
     include "../config/setup.php";

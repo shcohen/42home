@@ -63,11 +63,11 @@ session_start();
             </div> <!-- picture -->
             <hr>
             <div class="comment">
-                <div class="pseudo"><a href="front/profile.php"><b>username:</b></a></div>
+                <div class="pseudo"><b>username:</b></div>
                 <div class="comsg"><span>comment</span></div>
             </div> <!-- comment -->
             <div class="comment">
-                <div class="pseudo"><a href="front/profile.php"><b>username:</b></a></div>
+                <div class="pseudo"<b>username:</b></div>
                 <div class="comsg"><span>comment</span></div>
             </div> <!-- comment -->
             <br>

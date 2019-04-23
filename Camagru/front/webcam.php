@@ -54,7 +54,7 @@ if (file_exists("../assets/stickers/")) {
                 <div class="form">
                     <div class="tab-group">
                         <p>Filters and Stickers</p><br>
-                        <i class="fa fa-paint-brush ya" id="sticky" value="0" aria-hidden="true" onclick="sticky('<?= urlencode(json_encode($array)) ?>'); displayTitle()"></i>
+                        <i class="fa fa-paint-brush ya" id="sticky" value="0" aria-hidden="true" onclick="sticky('<?= urlencode(json_encode($array)) ?>'); displayButts()"></i>
                     </div> <!-- tab-group -->
                     <button class="button button-block xo" onclick="cancelSticky()">Cancel</button>
                 </div> <!-- form -->
@@ -62,8 +62,6 @@ if (file_exists("../assets/stickers/")) {
 
             <div class="webcam visi" id="webcam">
                 <div class="form">
-
-                    <textarea class="none" id="title" name="title" placeholder="Add your picture's legend here..."></textarea>
 
                     <div id="up" class="none">
                         <i class="fa fa-arrow-up" aria-hidden="true" onclick="moveUp()"></i>
@@ -92,16 +90,17 @@ if (file_exists("../assets/stickers/")) {
                     </div> <!-- arrow-down -->
 
                     <div class="butt">
-                        <button class="button button-block" id="retake" onclick="displayPicDown()">Retake</button>
-                        <button class="button button-block" id="screenshot" onclick="screenShot(); displayPicUp();">Screenshot</button>
+                        <button class="button button-block none" id="retake" onclick="displayPicDown(); cancelTitle()">Retake</button>
+                        <button class="button button-block none" id="screenshot" onclick="screenShot(); displayPicUp();">Screenshot</button>
                     </div> <!-- butt -->
                     <br>
                     <div class="none" id="green">
                         <br>
-                        <button class="button button-block xa none" id="submit">Submit</button>
+                        <input type="text" id="title" class="none" name="title" placeholder="Add your picture's legend here...">
+                        <br>
+                        <button class="button button-block xa" onclick="submit('submit')" id="submit">Submit</button>
                     </div>
 
-                    <br><br>
                 </div> <!-- form-->
             </div> <!-- webcam -->
 
@@ -111,6 +110,8 @@ if (file_exists("../assets/stickers/")) {
 
             <div class="webcam none" id="upload">
                 <div class="form">
+
+                    <input type="text" id="titleUp" class="none" name="title" placeholder="Add your picture's legend here...">
 
                     <div id="up2" class="none">
                         <i class="fa fa-arrow-up" aria-hidden="true" onclick="moveUp()"></i>
@@ -135,7 +136,7 @@ if (file_exists("../assets/stickers/")) {
                     </div> <!-- arrow-down -->
 
                     <div class="butt">
-                        <button type="submit" id="uploadbut" name="submit" class="button button-block">Upload</button>
+                        <button type="submit" id="uploadbut" name="submit" class="button button-block" onclick="submit()">Upload</button>
                     </div> <!-- butt -->
                     <br><br>
                 </div> <!-- form-->
@@ -145,6 +146,7 @@ if (file_exists("../assets/stickers/")) {
                 <div class="form">
                     <div class="tab-group">
                         <p>Previous Pictures</p>
+                        <img id="old" class="oldpics" src="">
                     </div>
                 </div> <!-- form -->
             </div> <!-- previous -->
