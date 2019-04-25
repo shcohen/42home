@@ -3,7 +3,28 @@ session_start();
 if (empty($_SESSION['id'])) {
     header("Location: /front/login.php?error=accessdenied");
     exit();
-}
+} else {
+require "../config/database.php";
+include "../config/setup.php";
+try {
+    $DB = new PDO($DB_DSNAME, $DB_USR, $DB_PWD);
+    $DB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $stmt = $DB->prepare("SELECT `img_id` FROM `img_info` WHERE `acc_id`=?");
+    $stmt->execute([$_SESSION['id']]);
+    $log = $stmt->fetchAll();
+    foreach ($log as $tab) {
+        foreach ($tab as $key => $value) {
+            if ($key === 'img_id') {
+                unset($tab[$key]);
+            } else {
+                $arr[] = $value;
+            }
+        }
+    }
+} catch (PDOException $e) {
+    header("Location: /front/webcam.php?error=database_error");
+    exit();
+} }
 if (file_exists("../assets/stickers/")) {
     $array = [];
     $array = array_diff(scandir("../assets/stickers/"), array(".", ".."));
@@ -146,7 +167,9 @@ if (file_exists("../assets/stickers/")) {
                 <div class="form">
                     <div class="tab-group">
                         <p>Previous Pictures</p>
-                        <img id="old" class="oldpics" src="">
+                        <?php for ($i = count($arr) -1; $i > 0; $i--) { ?>
+                                <img id="<?= $arr[$i]?>" class="oldpics" src='../pictures/<?=$arr[$i]?>.jpeg'>
+                        <?php } ?>
                     </div>
                 </div> <!-- form -->
             </div> <!-- previous -->

@@ -74,7 +74,7 @@ function submit(mode = 'upload') {
             if (form.readyState === 4) {
                 if (form.status === 200) {
                     if (form.responseText) {
-                        console.log(form.responseText);
+                        window.location.reload();
                     }
                 } else {
                     console.log('Ajax échoué :(');

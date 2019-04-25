@@ -45,9 +45,9 @@
     }  .none {
         display: none !important;
     }
-.old {
-    width: 572px;
-    height: 372px;
+.oldpics {
+    width: 275px;
+    height: 225px;
 }
 #video {
     width: 600px;
@@ -69,7 +69,7 @@
     cursor: pointer;
 }
     .fa.ya{
-        padding: 230px !important;
+        padding: 200px !important;
         font-size: 100px !important;
         cursor: pointer;
     }
@@ -145,6 +145,8 @@
     list-style: none;
     padding: 0;
     margin: 0 0 40px 0;
+    max-height: 500px;
+    overflow-y: scroll;
 }
     .tab-group p {
         display: block;

@@ -6,7 +6,7 @@ if (!empty($_POST['reco_email'])) {
     resetPwd($_GET['id_reset'], $_POST['new_pwd'], $_POST['check']);
 } else if (!empty($_POST['new_email']) || !empty($_POST['new_uname']) || !empty($_POST['pwd']) && !empty($_POST['new_check'])) {
     session_start();
-    updateInfo($_POST['new_email'], $_POST['new_uname'], $_POST['pwd'], $_POST['new_check'], $_SESSION['id']);
+    updateInfo($_POST['new_email'], htmlspecialchars($_POST['new_uname']), $_POST['pwd'], $_POST['new_check'], $_SESSION['id']);
 } else if (!empty($_POST['update']) && $_POST['update'] === 'notify' && !empty($_POST['checkbox'])) {
     session_start();
     $value = $_POST['checkbox'] === 'true' ? 1 : 0;
