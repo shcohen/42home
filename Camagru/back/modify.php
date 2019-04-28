@@ -76,6 +76,8 @@ function    resetPwd($id, $new, $check) {
                             exit();
                         }
                         $pwd = password_hash($new, PASSWORD_BCRYPT);
+                        $DB = new PDO($DB_DSNAME, $DB_USR, $DB_PWD);
+                        $DB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                         $stmt = $DB->prepare("UPDATE `user_info` SET `password`=? WHERE `acc_id`=?");
                         $stmt->execute([$pwd, $id]);
                         header("Location: /front/login.php?success=password_reset");
@@ -114,7 +116,9 @@ function    ableNotify($id, $notif) {
         if (!empty($log)) {
             if (intval($log['notify']) === 1) {
                 try {
-                    $stmt = $DB->prepare("UPDATE `user_info` SET `notify`=? WHERE acc_id=?");
+                    $DB = new PDO($DB_DSNAME, $DB_USR, $DB_PWD);
+                    $DB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                    $stmt = $DB->prepare("UPDATE `user_info` SET `notify`=? WHERE `acc_id`=?");
                     $stmt->execute([$notif, $id]);
                     echo "OK";
                     exit();
@@ -124,7 +128,9 @@ function    ableNotify($id, $notif) {
                 }
             } else if (intval($log['notify']) === 0){
                 try {
-                    $stmt = $DB->prepare("UPDATE `user_info` SET `notify`=? WHERE acc_id=?");
+                    $DB = new PDO($DB_DSNAME, $DB_USR, $DB_PWD);
+                    $DB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                    $stmt = $DB->prepare("UPDATE `user_info` SET `notify`=? WHERE `acc_id`=?");
                     $stmt->execute([$notif, $id]);
                     echo "OK";
                     exit();
@@ -168,6 +174,8 @@ function    updateInfo($email, $username, $new, $check, $id){
             $fetch = $stmt->fetch();
             if (!empty($fetch)) {
                 try {
+                    $DB = new PDO($DB_DSNAME, $DB_USR, $DB_PWD);
+                    $DB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                     $stmt = $DB->prepare("UPDATE `user_info` SET `email`=?, `username`=? WHERE `acc_id`=?");
                     $stmt->execute([$email, $username, $id]);
                     $_SESSION['username'] = $username;
@@ -194,10 +202,27 @@ function    updateInfo($email, $username, $new, $check, $id){
         $fetch = $stmt->fetch();
         if (!empty($fetch)) {
             try {
-                $stmt = $DB->prepare("UPDATE `user_info` SET `email`=? WHERE `acc_id`=?");
-                $stmt->execute([$email, $id]);
-                header("Location: /front/account.php?success=email_address_changed");
-                exit();
+                $DB = new PDO($DB_DSNAME, $DB_USR, $DB_PWD);
+                $DB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $stmt = $DB->prepare("SELECT * FROM `user_info` WHERE `email`=?");
+                $stmt->execute([$email]);
+                $log = $stmt->fetch();
+                if (empty($log)) {
+                    try {
+                        $DB = new PDO($DB_DSNAME, $DB_USR, $DB_PWD);
+                        $DB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                        $stmt = $DB->prepare("UPDATE `user_info` SET `email`=? WHERE `acc_id`=?");
+                        $stmt->execute([$email, $id]);
+                        header("Location: /front/account.php?success=email_address_changed");
+                        exit();
+                    } catch (PDOException $e) {
+                        header("Location: /front/account.php?error=database_error");
+                        exit();
+                    }
+                } else {
+                    header("Location: /front/account.php?error=email_adress_already_taken");
+                    exit();
+                }
             } catch (PDOException $e) {
                 header("Location: /front/account.php?error=database_error");
                 exit();
@@ -219,9 +244,40 @@ function    updateInfo($email, $username, $new, $check, $id){
         $fetch = $stmt->fetch();
         if (!empty($fetch)) {
             try {
+                $DB = new PDO($DB_DSNAME, $DB_USR, $DB_PWD);
+                $DB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $stmt = $DB->prepare("UPDATE `user_info` SET `username`=? WHERE `acc_id`=?");
                 $stmt->execute([$username, $id]);
                 $_SESSION['username'] = $username;
+                try {
+                    $DB = new PDO($DB_DSNAME, $DB_USR, $DB_PWD);
+                    $DB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                    $stmt = $DB->prepare("UPDATE `img_info` SET `user`=? WHERE `acc_id`=?");
+                    $stmt->execute([$username, $id]);
+                    try {
+                        $DB = new PDO($DB_DSNAME, $DB_USR, $DB_PWD);
+                        $DB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                        $stmt = $DB->prepare("UPDATE `like_info` SET `user`=? WHERE `acc_id`=?");
+                        $stmt->execute([$username, $id]);
+                        try {
+                            $DB = new PDO($DB_DSNAME, $DB_USR, $DB_PWD);
+                            $DB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                            $stmt = $DB->prepare("UPDATE `com_info` SET `user`=? WHERE `acc_id`=?");
+                            $stmt->execute([$username, $id]);
+                        } catch (PDOException $e) {
+                            header("Location: /front/account.php?error=database_error");
+                            exit();
+                        }
+                    } catch (PDOException $e) {
+                        echo $e;
+                        header("Location: /front/account.php?error=database_error");
+                        exit();
+                    }
+                } catch (PDOException $e) {
+                    echo $e;
+                    header("Location: /front/account.php?error=database_error");
+                    exit();
+                }
                 header("Location: /front/account.php?success=username_changed");
                 exit();
             } catch (PDOException $e) {
@@ -254,6 +310,8 @@ function    updateInfo($email, $username, $new, $check, $id){
                             exit();
                         }
                         $pwd = password_hash($new, PASSWORD_BCRYPT);
+                        $DB = new PDO($DB_DSNAME, $DB_USR, $DB_PWD);
+                        $DB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                         $stmt = $DB->prepare("UPDATE `user_info` SET `password`=? WHERE `acc_id`=?");
                         $stmt->execute([$pwd, $id]);
                         header("Location: /front/account.php?success=password_changed");

@@ -1,7 +1,6 @@
-function    likeIt(event) {
-    console.log(event.srcElement.classList.add('liked_but'));
-    let like = document.getElementById('like');
-    let liked = document.getElementById('liked');
+function    likeIt(event, img_id) {
+    let like = event.currentTarget.parentElement;
+    let liked = like.parentElement.querySelector('#liked');
     let liked_but = document.getElementById('liked_but');
     let like_but = document.getElementById('like_but');
     if (liked.classList.contains('none')) {
@@ -11,13 +10,26 @@ function    likeIt(event) {
         liked.classList.add('visi');
         like_but.classList.remove('active');
         liked_but.classList.add('active');
-    }
+    } let form = new XMLHttpRequest();
+    form.onreadystatechange = () => {
+        if (form.readyState === 4) {
+            if (form.status === 200) {
+                if (form.responseText) {
+                    window.location.reload();
+                }
+            } else {
+                console.log('Ajax échoué :(');
+            }
+        }
+    };
+    form.open('POST', '/back/img_info.php', true);
+    form.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    form.send("img_id=" + img_id + "&like=1");
 }
 
-function    likeDIt(event) {
-    console.log(event.srcElement.classList.add('like_but'));
-    let liked = document.getElementById('liked');
-    let like = document.getElementById('like');
+function    likeDIt(event, img_id) {
+    let liked = event.currentTarget.parentElement;
+    let like = liked.parentElement.querySelector('#like');
     let like_but = document.getElementById('like_but');
     let liked_but = document.getElementById('liked_but');
     if (like.classList.contains('none')) {
@@ -27,5 +39,40 @@ function    likeDIt(event) {
         like.classList.add('visi');
         liked_but.classList.remove('active');
         like_but.classList.add('active');
-    }
+    } let form = new XMLHttpRequest();
+    form.onreadystatechange = () => {
+        if (form.readyState === 4) {
+            if (form.status === 200) {
+                if (form.responseText) {
+                    window.location.reload();
+                }
+            } else {
+                console.log('Ajax échoué :(');
+            }
+        }
+    };
+    form.open('POST', '/back/img_info.php', true);
+    form.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    form.send("img_id=" + img_id + "&like=0");
+}
+
+function commenTed(event, img_id) {
+    // let comment = document.getElementById('comment');
+    let comment = event.srcElement.parentNode.childNodes[1].value;
+    let form = new XMLHttpRequest();
+    form.onreadystatechange = () => {
+        if (form.readyState === 4) {
+            console.log(form.responseText);
+            if (form.status === 200) {
+                if (form.responseText) {
+                    window.location.reload();
+                }
+            } else {
+                console.log('Ajax échoué ici :(');
+            }
+        }
+    };
+    form.open('POST', '/back/img_info.php', true);
+    form.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    form.send("img_id=" + img_id + "&comment=" + comment);
 }

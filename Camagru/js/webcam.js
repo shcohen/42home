@@ -108,15 +108,6 @@ function submit(mode = 'upload') {
     }
 }
 
-// SHOW OLD PICTURES
-function showOldPic() {
-    let old = document.getElementById('old');
-    if (old.classList.contains('none')) {
-        old.classList.remove('none');
-        old.classList.add('visi');
-    }
-}
-
 // DISPLAY STICKERS
 let i = 0;
 function sticky(array) {
@@ -241,6 +232,30 @@ function uploadImage(event) {
                 canvas.width, canvas.height);
         }
         file.src = canvas.toDataURL('image/png');
+    }
+}
+
+// DELETE PICTURES
+function deletePic(event) {
+    let r = confirm("You will delete this picture.");
+    if (r === true) {
+        let form = new XMLHttpRequest();
+        let img = event.target.id;
+        let deleted = true;
+        form.onreadystatechange = () => {
+            if (form.readyState === 4) {
+                if (form.status === 200) {
+                    if (form.responseText) {
+                        event.srcElement.remove();
+                    }
+                } else {
+                    console.log('Ajax échoué :(');
+                }
+            }
+        };
+        form.open('POST', '/back/img_info.php', true);
+        form.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        form.send("img_id=" + img + "&delete=" + deleted);
     }
 }
 

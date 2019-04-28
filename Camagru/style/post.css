@@ -65,5 +65,21 @@
 
 
 @media screen and (max-width: 600px) {
-
+    .form {
+        width: 225px;
+        align-self: center;
+    }
+    .gallery {
+        width: 215px;
+        height: 205px;
+    }
+    .pseudo {
+        width: 40%;
+    }
+    textarea {
+        width: 225px;
+    }
+    .button {
+        margin-left: 31%;
+    }
 }

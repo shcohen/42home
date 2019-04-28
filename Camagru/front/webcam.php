@@ -165,12 +165,12 @@ if (file_exists("../assets/stickers/")) {
 
             <div class="previous">
                 <div class="form">
-                    <div class="tab-group">
+                    <div class="tab-group" id="previous">
                         <p>Previous Pictures</p>
-                        <?php for ($i = count($arr) -1; $i > 0; $i--) { ?>
-                                <img id="<?= $arr[$i]?>" class="oldpics" src='../pictures/<?=$arr[$i]?>.jpeg'>
+                        <?php for ($i = count($arr) - 1; $i >= 0; $i--) { ?>
+                                <img id="<?= $arr[$i]?>" class="oldpics" src='../pictures/<?=$arr[$i]?>.jpeg' onclick="deletePic(event)">
                         <?php } ?>
-                    </div>
+                    </div> <!-- tab-group -->
                 </div> <!-- form -->
             </div> <!-- previous -->
         </div> <!-- contain -->
