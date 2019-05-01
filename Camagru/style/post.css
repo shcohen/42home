@@ -29,6 +29,9 @@
     .comsg {
         overflow: auto;
     }
+    .cocoment {
+        overflow-y: scroll;
+    }
     .fa-heart-o{
         float: right;
         border: none;
@@ -47,9 +50,6 @@
         resize: none;
         font-family: Arial, Helvetica, sans-serif;
     }
-    .addcomment {
-        margin-left: 40%;
-    }
 
 .visi {
     display: initial;
@@ -61,6 +61,18 @@
 
 .button {
     margin-left: 40%;
+}
+
+.pagination {
+    width: 100vw;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+}
+
+.pagination > a {
+    font-size: 16px;
+    margin: 0.2rem;
 }
 
 

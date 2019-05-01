@@ -18,13 +18,14 @@ function    likeIt(event, img_id) {
                     window.location.reload();
                 }
             } else {
+                console.log(form.status);
                 console.log('Ajax échoué :(');
             }
         }
     };
     form.open('POST', '/back/img_info.php', true);
     form.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    form.send("img_id=" + img_id + "&like=1");
+    form.send("img_id=" + img_id + "&like=" + 1);
 }
 
 function    likeDIt(event, img_id) {
@@ -47,17 +48,16 @@ function    likeDIt(event, img_id) {
                     window.location.reload();
                 }
             } else {
-                console.log('Ajax échoué :(');
+                console.log('Ajax échoué ici :(');
             }
         }
     };
     form.open('POST', '/back/img_info.php', true);
     form.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    form.send("img_id=" + img_id + "&like=0");
+    form.send("img_id=" + img_id + "&like=" + 'OK');
 }
 
 function commenTed(event, img_id) {
-    // let comment = document.getElementById('comment');
     let comment = event.srcElement.parentNode.childNodes[1].value;
     let form = new XMLHttpRequest();
     form.onreadystatechange = () => {

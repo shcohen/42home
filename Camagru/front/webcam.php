@@ -1,6 +1,8 @@
 <?php
 session_start();
-if (empty($_SESSION['id'])) {
+if (!file_exists("../pictures")) {
+    mkdir("../pictures", 0700);
+} if (empty($_SESSION['id'])) {
     header("Location: /front/login.php?error=accessdenied");
     exit();
 } else {

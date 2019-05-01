@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (empty($_SESSION['id'])) {
-    header("Location: /front/login.php?error=accessdenied");
+    header("Location: /front/login.php?error=access_denied");
     exit();
 } try {
     require "../config/database.php";

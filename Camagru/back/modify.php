@@ -18,8 +18,11 @@ if (!empty($_POST['reco_email'])) {
     if (!empty($_SESSION)) {
         header("Location: /front/account.php");
         exit();
-    } else
+    } else {
         session_destroy();
+        header("Location: /index.php?error=access_denied");
+        exit();
+    }
 }
 
 // SEND FORGOT PASSWORD LINK

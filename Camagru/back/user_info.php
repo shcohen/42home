@@ -99,7 +99,7 @@ function    sign_up($email, $username, $pwd, $rpwd) {
     } if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         header("Location: /front/login.php?error=invalidemail&uname=".$username."");
         exit();
-    } if (!preg_match("/^[a-zA-Z0-9]{5,25}$/", $username)) {
+    } if (!preg_match("/^[a-zA-Z0-9]{5,10}$/", $username)) {
         header("Location: /front/login.php?error=invalid_username&email=". $email."");
         exit();
     } if (!preg_match("/^.{6,30}$/", $pwd) || !preg_match("/^.{6,30}$/", $rpwd) || $pwd !== $rpwd) {
